@@ -1,0 +1,43 @@
+<ion-view title='<div class="logo"></div>' class="home center">
+
+    <ion-content class="padding">
+
+        <div class="list card cardprogram">
+
+            <div class="item">
+
+                <h2 translate="contact-us-text">Contact Us</h2>
+
+            </div>
+
+            <div class="item item-body">
+                
+                <p class="lorems center-forced" translate="get-in-touch">
+                    Get in touch with us by filling out the form below.<br/>                
+                    Or contact us at <a href="mailto:support@healinghouse.life">support@healinghouse.life</a></p>
+<label class="item-input">
+  <span class="input-label" translate="name-text">Name:</span>
+  <input ng-model="emailData.name" type="text">
+</label><br>
+                    <label class="item-input">
+  <span class="input-label">Email:</span>
+  <input ng-model="emailData.email" type="text">
+</label><br>
+                    <label class="item-input">
+  <span class="input-label" translate="message-text">Message</span>
+  <input ng-model="emailData.message" type="text">
+</label><br>
+                    <button ng-click="attemptSendMail()" class="button button-calm" translate="send-text">
+  Send
+</button>
+                    
+                
+                
+
+                
+                
+            </div>
+            </div>
+            
+    </ion-content>
+</ion-view>

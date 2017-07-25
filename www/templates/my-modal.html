@@ -1,0 +1,119 @@
+
+      <ion-modal-view class="modal center">
+
+
+        <ion-content class="modalpadding">
+            <br>
+            <div class="modaltitle" translate="program-kits">Program Kits</div>
+            <div class="modaldesc" translate="popular-routines">Our most popular routines</div>
+            
+            
+            
+<ion-scroll direction="x" class="wide-as-needed">
+  
+<div class="programs">
+
+    <div class="program" ng-click="selectPreSetProgram('basic')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/Basic.png"></div>
+        <div class="programdesc" translate="basic">BASIC<br><br></div>
+    </div>
+    
+  
+
+
+        <div class="program opacity-50" ng-click="selectPreSetProgram('business and travel')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/BusinessTraveller.png"></div>
+        <div class="programdesc" translate="business-traveler">BUSINESS &
+            <br>TRAVELER</div>
+    </div>
+    
+           <div class="program opacity-50" ng-click="selectPreSetProgram('family')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/family.png"></div>
+        <div class="programdesc" translate="family-kit">FAMILY <br>KIT</div>
+    </div>
+    
+      <div class="program opacity-50" ng-click="selectPreSetProgram('athlete')" category-switcher="category-switcher" >
+        <div class="programpic"><img src="img/Athlete.png"></div>
+        <div class="programdesc" translate="athlete">ATHLETE<br>&nbsp;<br></div>
+    </div>
+    
+         <div class="program opacity-50" ng-click="selectPreSetProgram('spa')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/Spa.png"></div>
+        <div class="programdesc" translate="spa-wellness">SPA & WELLNESS<br><br></div>
+    </div>
+    
+    
+     <div class="program opacity-50" ng-click="selectPreSetProgram('stress relief')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/stress.png"></div>
+        <div class="programdesc" translate="stress-release">STRESS<br> RELEASE</div>
+    </div>
+    
+     
+        <div class="program opacity-50" ng-click="selectPreSetProgram('senior')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/Senior.png"></div>
+        <div class="programdesc">SENIOR<br><br></div>
+    </div>
+    
+    
+        <div class="program opacity-50"  ng-click="selectPreSetProgram('chakra balancing')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/chakra.png"></div>
+        <div class="programdesc" translate="chakra-balancing">CHAKRA<br>BALANCING</div>
+    </div>
+    
+        <div class="program opacity-50" ng-click="selectPreSetProgram('elements')" category-switcher="category-switcher">
+        <div class="programpic"><img src="img/Elements.png"></div>
+        <div class="programdesc" translate="elements-meridians">ELEMENTS &<br>MERIDIANS<br></div>
+    </div>
+  
+    
+
+</div>
+                   
+</ion-scroll>
+
+
+<div class="modaltitle" translate="programs"> PROGRAMS</div>
+<div ng-repeat="routine in predefinedPrograms" ng-show="presetSelected == routine.category">
+
+{{ routine.name }}
+<!--<div class="purchase-status">{{ routine.purchaseStatus }}</div>-->
+
+<div class="paddingmodal">
+
+   
+    <ion-list ng-click="insertPreSetProgram(routine.programs[0], routine.programs[1], routine.programs[2],routine.programs[3])">
+        
+        <ion-item ng-repeat="program in routine.programs" class="addiction">
+             {{ program.name }}
+        </ion-item>
+
+
+    </ion-list>
+
+</div>
+
+</div>
+
+            
+            <div class="modaltitle" translate="independent-programs">INDEPENDENT PROGRAMS</div>
+            <div class="modaldesc" translate="tap-program">Tap program to add to routine  |  Tap and hold to learn more</div>
+            <div class="paddingmodal">
+<ion-list class="programlist">
+
+    
+  <!--<ion-item class="addiction" on-hold="moreProgramInfo(program.sys.id, program.fields.name, program.fields.runningtime, program.fields.description)" ng-repeat="program in programs" ng-click="addProgramToRoutine(program.sys.id, program.fields.name, program.fields.runningtime, program.fields.apiName)" nav-transition="ios" nav-direction="forward" href="#/app/routines" ng-click="modal.hide()">
+{{program.fields.name}} </ion-item>-->
+    
+<ion-item class="addiction" on-hold="moreProgramInfo('', program.name, program.runningtime, program.description)" ng-repeat="program in programs" ng-click="addProgramToRoutine('', program.name, program.runningtime, program.apiName)" nav-transition="ios" nav-direction="forward" href="#/app/routines" ng-click="modal.hide()">
+{{program.name}} </ion-item>
+    
+    
+</ion-list>
+            </div>
+           
+            <button class="bluebtn" ng-click="modal.hide()" translate="cancel">Cancel</button>
+          <br><br><br><br><br><br><br><br>
+        </ion-content>
+      </ion-modal-view>
+
+

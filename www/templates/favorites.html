@@ -1,0 +1,29 @@
+<ion-view title='<div class="logo"></div>' class="home center">
+
+    <ion-content class="padding">
+
+        <div class="list card cardprogram">
+
+            <div class="item">
+
+                <h2>Favorites</h2>
+
+            </div>
+
+            
+            <div ng-repeat="fav in favorites" class="item item-body">
+
+               {{ fav.name }} 
+               <button ng-click="startFavoriteRoutine(fav)">start</button> 
+               <button ng-click="removeRoutine(fav.id)">delete</button> <br/>
+
+               <div ng-repeat="program in fav.programs">
+                    {{ program.program_name }} -  {{ program.program_running_time }}
+               </div>
+                
+            </div>
+
+            </div>
+            
+    </ion-content>
+</ion-view>

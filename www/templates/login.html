@@ -1,0 +1,53 @@
+<ion-view title='<div class="logo"></div>' class="home center">
+
+    <ion-content class="padding">
+
+      <div ng-show="!isUserLogged">
+
+        <div class="list card cardprogram">
+
+            <div class="item">
+
+                <h2>Login</h2>
+
+            </div>
+
+            <div class="item item-body">
+                <div class="">Welcome</div>
+                <p class="lorems">
+                   Please login using your account information.
+                </p>
+
+                <label class="item-input">
+                    <input ng-model="loginData.email" type="text" placeholder="Email" autocapitalize="none">
+                </label>
+                <br>
+                <label class="item-input fondoblanco">
+                    <input ng-model="loginData.password" type="password" placeholder="Password">
+                </label>
+                <br>
+                <button ng-click="attemptUserLogin()" class="button button-calm">
+                    LOGIN
+                </button>
+                <br>
+                <br>
+                <ion-item class="menuitemintern" nav-transition="ios" nav-direction="forward" href="#/app/createaccount">
+                    REGISTER
+                </ion-item>
+                <ion-item class="menuitemintern" nav-transition="ios" nav-direction="forward" href="#/app/forgotpassword">
+                    FORGOT
+                </ion-item>
+
+            </div>
+        </div>
+
+       </div>
+
+       <div ng-show="isUserLogged">
+          
+          Hello {{ userEmail }} !
+
+       </div>
+
+    </ion-content>
+</ion-view>

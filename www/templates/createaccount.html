@@ -1,0 +1,49 @@
+    <ion-view title="Create an Account" class="home center">
+
+        <ion-content  has-header="true" class="padding">
+    
+            <div class="success">Welcome !</div>
+            <hr>
+            <div class="success2">Please create an account</div>
+            <br>
+            <img ng-click="getPhoto()" id="profilepic" src="img/profilepic.png">
+            <br>
+            <div class="success2">TAP TO SELECT A PHOTO</div>
+            <br>
+            <!--<input type="text" ng-model="" class="input username">-->
+            <br>
+            <input type="text" ng-model="userData.email" class="input email" autocapitalize="none">
+            <br>
+            <div class="item item-input item-select gender">
+                <select ng-model="userData.gender"  placeholder="username">
+                    <option >Male</option>
+                    <option>Female</option>
+                    <option>.</option>
+                </select>
+            </div>
+            <!--<input type="text" ng-model="userData.gender"  class="input gender">-->
+            <br>
+            <input type="date" style="width:210px;" ng-model="userData.dateOfBirth"  class="input birth">
+            <br>
+            <input type="password" ng-model="userData.pass"  class="input pass">
+            <br>
+            <input type="password" ng-model="userData.pass_confirm"  class="input pass">
+            <br><br>
+            <button ng-click="attemptRegistration()" class="greenbtn" menu-close nav-transition="ios" nav-direction="forward" href="#">Create Account</button>
+             <br/>
+             <br/>
+                        <img ng-click="attemptFacebookRegistraion()" src="img/fb-login.png" width="70px;">
+
+            <!--<a ng-click="attemptRegistration()" class="greenbtn" menu-close nav-transition="ios" nav-direction="forward" href="#/app/bubbles">Create Account</a>-->
+            <br><br>
+                         <a class="greenbtn" menu-close nav-transition="ios" nav-direction="forward" href="#/app/routines">Skip</a>
+
+            <br><br>
+            <div class="copyright">© Copyright 2015. All rights reserved.</div>     
+        </ion-content>
+</ion-view>
+ 
+
+
+
+ 
