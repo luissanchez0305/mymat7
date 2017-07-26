@@ -141,7 +141,6 @@
     <plugin name="cordova-plugin-dialogs" source="npm" />
     <plugin name="cordova-plugin-file"  source="npm" />
     <plugin name="cordova-plugin-network-information" source="npm" />
-    <plugin name="com.ionic.deploy" source="pgb" />
     <engine name="ios" spec="~4.4.0"/>
     <engine name="android" spec="~6.2.3"/>
 </widget>
