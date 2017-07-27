@@ -8,16 +8,16 @@
         <div class="bubblescontainer">
             <div class="bubbles">
                 <div ng-click="selectBubble(1)" on-hold="removeProgramFromRoutine(1)" ng-style="bubblesCurrentState.bubble1 && {'background-image':'url(img/bubble-violet.png)'}" class="single-bubble-1"></div>
-                <div class="bubbles-program-name-1" ng-click="selectBubble(1)">{{ bubblesNames[0] }}</div>
+                <div class="bubbles-program-name-1" ng-click="selectBubble(1,true)">{{ bubblesNames[0] }}</div>
 
                 <div ng-click="selectBubble(2)" on-hold="removeProgramFromRoutine(2)" ng-style="bubblesCurrentState.bubble2 && {'background-image':'url(img/bubble-red.png)'}" class="single-bubble-2"></div>
-                <div class="bubbles-program-name-2" ng-click="selectBubble(2)">{{ bubblesNames[1] }}</div>
+                <div class="bubbles-program-name-2" ng-click="selectBubble(2,true)">{{ bubblesNames[1] }}</div>
 
                 <div ng-click="selectBubble(3)" on-hold="removeProgramFromRoutine(3)" ng-style="bubblesCurrentState.bubble3 && {'background-image':'url(img/bubble-yellow.png)'}" class="single-bubble-3"></div>
-                <div class="bubbles-program-name-3" ng-click="selectBubble(3)">{{ bubblesNames[2] }}</div>
+                <div class="bubbles-program-name-3" ng-click="selectBubble(3,true)">{{ bubblesNames[2] }}</div>
 
                 <div ng-click="selectBubble(4)" on-hold="removeProgramFromRoutine(4)" ng-style="bubblesCurrentState.bubble4 && {'background-image':'url(img/bubble-green.png)'}" class="single-bubble-4"></div>
-                <div class="bubbles-program-name-4" ng-click="selectBubble(4)">{{ bubblesNames[3] }}</div>
+                <div class="bubbles-program-name-4" ng-click="selectBubble(4,true)">{{ bubblesNames[3] }}</div>
             </div>
             <!--<div class="bubbles1" ng-click="modal.show()"></div>
             <div class="bubbles2" ng-click="modal.show()"></div>

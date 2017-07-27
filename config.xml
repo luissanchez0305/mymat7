@@ -66,8 +66,7 @@
         <splash src="resources/android/splash/splash-port-hdpi.png" density="port-hdpi"/>
         <splash src="resources/android/splash/splash-port-xhdpi.png" density="port-xhdpi"/>
         <splash src="resources/android/splash/splash-port-xxhdpi.png" density="port-xxhdpi"/>
-        <splash src="resources/android/splash/splash-port-xxxhdpi.png" density="port-fr-xhdpi"/>
-        <splash src="resources/android/splash.png" />        
+        <splash src="resources/android/splash/splash-port-xxxhdpi.png" density="port-xxxhdpi"/>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*"/>
@@ -141,6 +140,7 @@
     <plugin name="cordova-plugin-dialogs" source="npm" />
     <plugin name="cordova-plugin-file"  source="npm" />
     <plugin name="cordova-plugin-network-information" source="npm" />
+    <plugin name="com.ionic.deploy" source="pgb" />
     <engine name="ios" spec="~4.4.0"/>
     <engine name="android" spec="~6.2.3"/>
 </widget>

@@ -1659,9 +1659,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $scope.modal2 = modal2;
     });
 
-    $scope.selectBubble = function (bubble) {
+    $scope.selectBubble = function (bubble,showModal) {
         currentlySelectedBubble = bubble;
-        $scope.modal.show();
+        if(showModal)
+            $scope.modal.show();
     }
 
     $scope.addProgramToRoutine = function (idProgram, programName, programRunningTime, apiName) {
