@@ -46,7 +46,7 @@
         <icon src="resources/android/icon/hdpi.png" density="hdpi" />
         <icon src="resources/android/icon/xhdpi.png" density="xhdpi" />
         <icon src="resources/android/icon/xxhdpi.png" density="xxhdpi" />
-        <icon src="resources/android/icon/xxxhdpi.png" density="fr-xhdpi" />     
+        <icon src="resources/android/icon/xxxhdpi.png" density="xxxhdpi" />     
         
         <!--<splash src="resources/android/splash/drawable-land-ldpi-screen.png" density="land-ldpi"/>
         <splash src="resources/android/splash/drawable-land-mdpi-screen.png" density="land-mdpi"/>
