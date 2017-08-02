@@ -2,7 +2,7 @@
 <widget
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.esferasoluciones.mymat-light"
-        version   = "7.1"
+        version   = "7.1.1"
         versionCode = "1">
     <!--<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">-->
     <name>MyMat - Light 7</name>
