@@ -1879,6 +1879,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     $scope.allProgramsTimer = 0;
     $scope.totalRunningTime = 0;
+    $scope.displayRunningTime = 0;
     $scope.program1CurrentTime = 0;
     $scope.program2CurrentTime = 0;
     $scope.program3CurrentTime = 0;
@@ -1918,6 +1919,15 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.program4CurrentTimeDecreasingAsTime = convertSecondsToTime($scope.program4CurrentTimeDecreasing);
 
     $scope.programs = programs;
+
+    if($scope.program1[2] > $scope.program2[2] && $scope.program1[2] > $scope.program2[2] && $scope.program1[2] > $scope.program3[2] && $scope.program1[2] > $scope.program4[2])
+        $scope.displayRunningTime = convertSecondsToTime($scope.program1[2]);
+    else if($scope.program2[2] > $scope.program3[2] && $scope.program2[2] > $scope.program4[2])
+        $scope.displayRunningTime = convertSecondsToTime($scope.program2[2]);
+    else if($scope.program3[2] > $scope.program4[2])
+        $scope.displayRunningTime = convertSecondsToTime($scope.program3[2]);
+    else
+        $scope.displayRunningTime = convertSecondsToTime($scope.program4[2]);
 
     initRoutine(programs);
 
