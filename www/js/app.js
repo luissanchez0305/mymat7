@@ -308,3 +308,11 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 })
+.constant('AUTH_EVENTS', {
+  notAuthenticated: 'auth-not-authenticated',
+  notAuthorized: 'auth-not-authorized'
+})
+.constant('USER_ROLES', {
+  admin: 'admin_role',
+  public: 'public_role'
+});
