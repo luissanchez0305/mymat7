@@ -38,7 +38,7 @@ var translations = {
                 "family-kit": "FAMILY<br>KIT",
                 "athlete": "ATHLETE",
                 "spa-wellness": "SPA &<br>WELLNESS",
-                "stress-relief": "STRESS<br>relief",
+                "stress-relief": "STRESS<br>RELIEF",
                 "chakra-balancing": "CHAKRA<br>BALANCING",
                 "elements-meridians": "ELEMENTS &<br>MERIDIANS<br>",
                 "programs": "PROGRAMS",
