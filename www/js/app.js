@@ -303,8 +303,6 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
   }
 	$translateProvider.fallbackLanguage('es');
     
-
-    
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 })

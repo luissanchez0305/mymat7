@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['pascalprecht.translate'])
 
-.controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, myAppConfig, Languages) {
+.controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, myAppConfig, Languages, User) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -20,7 +20,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     
     $scope.translations = Languages;
     localStorage.fbStatus = "";
-
+    
+    // Revisar si el usuario esta logueado
+    User.isUserLoggedIn().success(function(loggedInfo) {
+            if(loggedInfo.status == 'false')
+                location.href = '/www/index.html#/app/login';
+        });
+        
     getOfflinePorgramObject = function (name) {
         var returnedObj;
         var i = 0;
@@ -1473,10 +1479,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     })
 
 })
-
-
-.controller('HomeViewController', function ($scope) {
-
+.controller('HomeViewController', function ($scope, User) {
+    
     $scope.skipRegistration = function () {
         $location.path('app/routines');
         //$state.go('app.routines');
