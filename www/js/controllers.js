@@ -1382,7 +1382,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             },
         {
             category: 'elements',
-            name: translationsRoutines[$translate.preferredLanguage()]['heart-opening-upper'],
+            name: translationsRoutines[$translate.preferredLanguage()]['liver-function-upper'],
             programs: [
 
                  getOfflinePorgramObject("Liver_Meridian"),
@@ -1393,7 +1393,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             },
         {
             category: 'elements',
-            name: translationsRoutines[$translate.preferredLanguage()]['heart-opening-upper'],
+            name: translationsRoutines[$translate.preferredLanguage()]['liver-function-upper'],
             programs: [
 
                  getOfflinePorgramObject("Heart_Meridian"),
