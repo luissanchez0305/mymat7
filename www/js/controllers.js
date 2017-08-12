@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['pascalprecht.translate'])
 
-.controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, myAppConfig, Languages, User) {
+.controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, $location, myAppConfig, Languages, User) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -24,7 +24,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     // Revisar si el usuario esta logueado
     User.isUserLoggedIn().success(function(loggedInfo) {
             if(loggedInfo.status == 'false')
-                location.href = '/www/index.html#/app/login';
+                $location.path('app/login');
         });
         
     getOfflinePorgramObject = function (name) {
