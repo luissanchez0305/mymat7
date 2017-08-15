@@ -9,6 +9,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
     
+    $scope.passwordText = translations[$translate.preferredLanguage()]['password'];    
     $scope.changeLang = $translate.preferredLanguage() == "es" ? "ENGLISH" : "ESPAÑOL";
     $scope.changeLangCode = $translate.preferredLanguage() == "es" ? "en" : "es";
     
@@ -23,8 +24,16 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     
     // Revisar si el usuario esta logueado
     User.isUserLoggedIn().success(function(loggedInfo) {
-            if(loggedInfo.status == 'false')
+            if(loggedInfo.status == 'false'){
                 $location.path('app/login');
+                $('.menuitemhome.routinesMenuBtn').hide();
+                $('.menuitemhome.loginMenuBtn').show();
+            }
+            else{
+                $location.path('app/routines');
+                $('.menuitemhome.routinesMenuBtn').show();
+                $('.menuitemhome.loginMenuBtn').hide();
+            }
         });
         
     getOfflinePorgramObject = function (name) {

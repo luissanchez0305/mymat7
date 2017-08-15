@@ -13,17 +13,17 @@
             </div>
 
             <div class="item item-body">
-                <div class="">Welcome</div>
-                <p class="lorems">
-                   Please login using your account information.
-                </p>
-
+                <label class="lorems lorems-content" translate="please-login">
+                   Please login using your account information
+                </label>
+                <br/>
+                <br/>
                 <label class="item-input">
                     <input ng-model="loginData.email" type="text" placeholder="Email" autocapitalize="none">
                 </label>
                 <br>
                 <label class="item-input fondoblanco">
-                    <input ng-model="loginData.password" type="password" placeholder="Password">
+                    <input ng-model="loginData.password" type="password" placeholder="{{ passwordText }}">
                 </label>
                 <br>
                 <button ng-click="attemptUserLogin()" class="button button-calm">
@@ -31,10 +31,10 @@
                 </button>
                 <br>
                 <br>
-                <ion-item class="menuitemintern" nav-transition="ios" nav-direction="forward" href="#/app/createaccount">
+                <ion-item translate="register-link" class="menuitemusers" nav-transition="ios" nav-direction="forward" href="#/app/createaccount">
                     REGISTER
                 </ion-item>
-                <ion-item class="menuitemintern" nav-transition="ios" nav-direction="forward" href="#/app/forgotpassword">
+                <ion-item translate="forgot-password-link" class="menuitemhelp last" nav-transition="ios" nav-direction="forward" href="#/app/forgotpassword">
                     FORGOT
                 </ion-item>
 

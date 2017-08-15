@@ -56,9 +56,17 @@ margin-top: 25px !important;}
 .lorems {
     color: #999!important;
     font-size: 12px!important;
-    text-align: justify!important;
+    text-align: center!important;
     padding: 10px;
     margin-top: 0px!important;
+}
+.lorems-content{
+    font-size:15px!important; 
+    color: #121212!important;
+}
+
+.item-select select.gray-bg{
+    background-color: #f1f1f1 !important;
 }
 
 hr {
@@ -88,11 +96,11 @@ hr {
     opacity: 0.5;
 }
 .item:nth-child(even) {
-    background-color: #fff!important;
+    background-color: #fff !important;
 }
 
 .item:nth-child(odd) {
-    background-color: #BBE1F1!important;
+    background-color: #BBE1F1 !important;
 }
 
 .item-complex .item-content {
@@ -168,6 +176,10 @@ left: -2px !important;
     font-size: 12px;
 }
 
+.item.item-input.item-select.small {
+    width: 100px !important;
+}
+
 .item.item-input.item-select {
     border-radius: 5px;
     color: #999;
@@ -241,14 +253,15 @@ left: -2px !important;
     background-position: top left;
     background-size: 140% 100%;
     background-repeat: no-repeat;
-    padding-left: 50px!important;
+    padding-left: 20px!important;
+    width: 220px!important;
 }
 
 .gender {
     margin: auto;
     background-image: url(../img/gender.png);
     background-position: top left;
-    background-size: 140% 100%;
+    background-size: 300% 100%;
     background-repeat: no-repeat;
     padding-left: 50px!important;
 }
@@ -268,7 +281,7 @@ left: -2px !important;
     background-position: top left;
     background-size: 140% 100%;
     background-repeat: no-repeat;
-    padding-left: 50px!important;
+    padding-left: 20px!important;
     width: 220px!important;
 }
 
@@ -520,6 +533,10 @@ display:none;
     padding-left: 50px;
     background-position: top right;
     background-position: 7% 17px;
+}
+
+.menuitemusers.last .item-content, .menuitemhelp.last .item-content {
+    border-bottom: none !important;
 }
 
 .menuitemcontact .item-content {
