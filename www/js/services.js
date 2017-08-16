@@ -12,6 +12,10 @@ angular.module('starter.services', [])
       	    password: loginData.password
         })
     },
+    attempUserLogout: function(){
+        var url = myAppConfig.mainApiUrl+"logout_user.php";
+        return $http.get(url);
+    },
     attemptUserRegistration: function(userData) {
         var url = myAppConfig.mainApiUrl+"register_user.php";
         var data = {

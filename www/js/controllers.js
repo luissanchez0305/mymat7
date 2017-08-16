@@ -18,6 +18,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $translate.preferredLanguage(code);
         $window.location.reload(true);
     }
+    $scope.logoutUser = function(){
+        User.attempUserLogout();
+        $location.path('app/login');
+    }
+    
     
     $scope.translations = Languages;
     localStorage.fbStatus = "";
@@ -25,17 +30,30 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     // Revisar si el usuario esta logueado
     User.isUserLoggedIn().success(function(loggedInfo) {
             if(loggedInfo.status == 'false'){
-                $location.path('app/login');
                 $('.menuitemhome.routinesMenuBtn').hide();
-                $('.menuitemhome.loginMenuBtn').show();
+                $('.menuitemusers.loginMenuBtn').show();
+                $location.path('app/login');
             }
             else{
-                $location.path('app/routines');
+                $location.path('app/home')
                 $('.menuitemhome.routinesMenuBtn').show();
-                $('.menuitemhome.loginMenuBtn').hide();
+                $('.menuitemusers.loginMenuBtn').hide();
+                setTimeout(function(){$location.path('app/routines')},4000);
             }
         });
-        
+    
+    loginObjects = function(){
+        $('.menuitemhome.routinesMenuBtn').show();
+        $('.menuitemusers.loginMenuBtn').hide();
+        $('.menuitemusers.logoutMenuBtn').show();
+    }   
+    
+    logoutObjects = function (){
+        $('.menuitemhome.routinesMenuBtn').hide();
+        $('.menuitemusers.loginMenuBtn').show();
+        $('.menuitemusers.logoutMenuBtn').hide();
+    }
+    
     getOfflinePorgramObject = function (name) {
         var returnedObj;
         var i = 0;
