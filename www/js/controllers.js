@@ -1584,6 +1584,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             if (result.data.status == "ok") {
                 $scope.isUserLogged = true;
                 $scope.userEmail = result.data.loggedUserEmail;
+                loginObjects();
             } else {
                 gapAlert("Username or password not valid", "Login Unsuccessful");
             }
