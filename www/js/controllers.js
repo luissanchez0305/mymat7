@@ -30,14 +30,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     // Revisar si el usuario esta logueado
     User.isUserLoggedIn().success(function(loggedInfo) {
             if(loggedInfo.status == 'false'){
-                $('.menuitemhome.routinesMenuBtn').hide();
-                $('.menuitemusers.loginMenuBtn').show();
+                logoutObjects();
                 $location.path('app/login');
             }
             else{
                 $location.path('app/home')
-                $('.menuitemhome.routinesMenuBtn').show();
-                $('.menuitemusers.loginMenuBtn').hide();
+                loginObjects();
                 setTimeout(function(){$location.path('app/routines')},4000);
             }
         });
