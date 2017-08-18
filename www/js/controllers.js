@@ -21,24 +21,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.logoutUser = function(){
         User.attempUserLogout();
         $location.path('app/login');
+        localStorage.UserLoggedIn = false;
     }
     
     
     $scope.translations = Languages;
     localStorage.fbStatus = "";
-    
-    // Revisar si el usuario esta logueado
-    User.isUserLoggedIn().success(function(loggedInfo) {
-            if(loggedInfo.status == 'false'){
-                logoutObjects();
-                $location.path('app/login');
-            }
-            else{
-                $location.path('app/home')
-                loginObjects();
-                setTimeout(function(){$location.path('app/routines')},4000);
-            }
-        });
     
     loginObjects = function(){
         $('.menuitemhome.routinesMenuBtn').show();
@@ -50,6 +38,21 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $('.menuitemhome.routinesMenuBtn').hide();
         $('.menuitemusers.loginMenuBtn').show();
         $('.menuitemusers.logoutMenuBtn').hide();
+    }
+    
+    // Revisar si el usuario esta logueado
+    if(localStorage.UserLoggedIn == 'true'){
+        $location.path('app/home');
+        loginObjects();
+        setTimeout(function(){$location.path('app/routines')},4000);
+    }
+    else{
+        logoutObjects();
+        
+        if(localStorage.DisplayLoginView == 'true'){
+            $location.path('app/login');
+            localStorage.DisplayLoginView = false;
+        }
     }
     
     getOfflinePorgramObject = function (name) {
@@ -1585,6 +1588,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 $scope.isUserLogged = true;
                 $scope.userEmail = result.data.loggedUserEmail;
                 loginObjects();
+                localStorage.UserLoggedIn = true;
+                
+                $location.path('app/routines');
             } else {
                 gapAlert("Username or password not valid", "Login Unsuccessful");
             }
