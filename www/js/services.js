@@ -79,6 +79,10 @@ angular.module('starter.services', [])
            //var url = myAppConfig.myMatApiUrl+"?P1=Backache&P2=Eyesight&P3=Headache&P4=Injury";
            var response = $http.get(url);
            return response;
+      },
+      test: function(){
+          var response = $http.get(myAppConfig.myMatApiUrl);
+           return response;
       }
   }
 

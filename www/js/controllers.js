@@ -1534,8 +1534,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 })
 
-
-
 .controller('MyAccountViewController', function ($scope, User, $location) {
 
     User.isUserLoggedIn().then(function (res) {
@@ -1564,7 +1562,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 })
 
 
-.controller('WifiScanViewController', function ($scope) {
+.controller('WifiScanViewController', function ($scope, MyMat) {
 
     //scanForWifi();
     $scope.scanForWifi = function () {
@@ -1576,6 +1574,46 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             alert(handler.SSID);
         }, fail);
     };
+    
+    var testInterval;
+    // check if mymat is connected
+    MyMat.test().then(function successCallback(response) {
+            // if is connected quitar imagen, textos y loading y poner status del mat
+            showStatus(response);
+        }, function errorCallback(response) {
+            // if not display loading y quitar boton
+            $('.activate-wifi-container').show();
+            $('.mymat-status-container').hide();
+            testInterval = setInterval(function(){
+                MyMat.test().then(function successCallback(response) {
+                    showStatus(response);
+                });
+            }, 2000);
+    });
+    
+    showStatus = function(response){
+        $('.activate-wifi-container').hide();
+        $('.mymat-status-container').show();
+        clearInterval(testInterval);
+        
+        var power = res.data.split("<p><h4>Power: ");
+        power = power[1].split("</h4></p>");
+        var coil1 = res.data.split("<tr><td>1.</td><td>");
+        coil1 = coil1[1].split("</h4></p>");
+        var coil2 = res.data.split("<tr><td>2.</td><td>");
+        coil2 = coil2[1].split("</h4></p>");
+        var coil3 = res.data.split("<tr><td>3.</td><td>");
+        coil3 = coil3[1].split("</h4></p>");
+        var coil4 = res.data.split("<tr><td>4.</td><td>");
+        coil4 = coil4[1].split("</h4></p>");
+        alert(power + ' ' + coil1 + ' ' + coil2 + ' ' + coil3 + ' ' + coil4);
+    }
+    
+    showActivateWifi = function(){
+        $('.activate-wifi-container').show();
+        $('.mymat-status-container').hide();
+    }
+    
 
 })
 
