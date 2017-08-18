@@ -83,6 +83,9 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
                 }*/
             });
         }
+	else {
+		$ionicPopup.confirm({ title: 'what', content: navigator.conntection.type });
+	}
     }
   });
 })
