@@ -1607,7 +1607,7 @@
         coil3 = coil3[1].split("</h4></p>");
         var coil4 = res.data.split("<tr><td>4.</td><td>");
         coil4 = coil4[1].split("</h4></p>");
-        alert(power + ' ' + coil1 + ' ' + coil2 + ' ' + coil3 + ' ' + coil4);
+        gapAlert(power + ' ' + coil1 + ' ' + coil2 + ' ' + coil3 + ' ' + coil4);
     }
     
     showActivateWifi = function(){
