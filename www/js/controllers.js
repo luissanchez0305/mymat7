@@ -1527,6 +1527,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         User.attemptUserRegistration($scope.userData).then(function (result) {
             if (result.data.status == "ok") {
                 $location.path('app/routines');
+                loginObjects();
+                $scope.UserLoggedIn = true;
             } else {
                 gapAlert("Some fields are not valid", "Registration Unsuccessful");
             }
