@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['pascalprecht.translate'])
+﻿angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, myAppConfig, Languages) {
 
@@ -1572,6 +1572,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             function (res) {},
             function (error) {}
         );*/
+	alert(WifiWizard);
         WifiWizard.getCurrentSSID(function(handler){
             alert(handler.SSID);
         }, fail);
