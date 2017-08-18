@@ -71,7 +71,19 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
             });
         }, null);
     }
-    
+    if(window.Connection) {
+        if(navigator.connection.type == Connection.NONE) {
+            $ionicPopup.confirm({
+                title: "Internet Disconnected",
+                content: "The internet is disconnected on your device."
+            })
+            .then(function(result) {
+                /*if(!result) {
+                    ionic.Platform.exitApp();
+                }*/
+            });
+        }
+    }
   });
 })
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $translateProvider, contentfulClientProvider, myAppConfig) {
