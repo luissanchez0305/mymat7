@@ -1393,7 +1393,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             },
         {
             category: 'elements',
-            name: translationsRoutines[$translate.preferredLanguage()]['liver-function-upper'],
+            name: translationsRoutines[$translate.preferredLanguage()]['heart-function-upper'],
             programs: [
 
                  getOfflinePorgramObject("Heart_Meridian"),
