@@ -22,6 +22,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         User.attempUserLogout();
         $location.path('app/login');
         localStorage.UserLoggedIn = false;
+        logoutObjects();
     }
     
     
@@ -44,7 +45,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     if(localStorage.UserLoggedIn == 'true'){
         $location.path('app/home');
         loginObjects();
-        setTimeout(function(){$location.path('app/routines')},4000);
+        setTimeout(function(){$location.path('app/routines')},2000);
     }
     else{
         logoutObjects();
