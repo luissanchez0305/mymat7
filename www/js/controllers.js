@@ -1567,13 +1567,15 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 .controller('WifiScanViewController', function ($scope) {
 
     //scanForWifi();
-
-    function scanForWifi() {
-        WifiWizard.startScan(
+    $scope.scanForWifi = function () {
+        /*WifiWizard.startScan(
             function (res) {},
             function (error) {}
-        );
-    }
+        );*/
+        WifiWizard.getCurrentSSID(function(handler){
+            alert(handler.SSID);
+        }, fail);
+    };
 
 })
 
