@@ -1600,13 +1600,13 @@
         var power = response.data.split("<p><h4>Power: ");
         power = power[1].split("</h4></p>");
         var coil1 = response.data.split("<tr><td>1.</td><td>");
-        coil1 = coil1[1].split("</td></tr>");
+        coil1 = coil1[2].split("</td></tr>");
         var coil2 = response.data.split("<tr><td>2.</td><td>");
-        coil2 = coil2[1].split("</td></tr>");
+        coil2 = coil2[2].split("</td></tr>");
         var coil3 = response.data.split("<tr><td>3.</td><td>");
-        coil3 = coil3[1].split("</td></tr>");
+        coil3 = coil3[2].split("</td></tr>");
         var coil4 = response.data.split("<tr><td>4.</td><td>");
-        coil4 = coil4[1].split("</td></tr>");
+        coil4 = coil4[2].split("</td></tr>");
         gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
     }
     
