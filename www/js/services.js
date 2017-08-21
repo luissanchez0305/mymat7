@@ -76,7 +76,6 @@ angular.module('starter.services', [])
            var program4Temp = programs[3].split("|");
            var program4 = program4Temp[3];
            var url = myAppConfig.myMatApiUrl+"?P1="+program1+"&P2="+program2+"&P3="+program3+"&P4="+program4;
-           //var url = myAppConfig.myMatApiUrl+"?P1=Backache&P2=Eyesight&P3=Headache&P4=Injury";
            var response = $http.get(url);
            return response;
       },
