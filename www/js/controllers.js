@@ -1597,7 +1597,7 @@
         $('.mymat-status-container').show();
         clearInterval(testInterval);
         
-        var power = res.data.split("<p><h4>Power: ");
+        var power = response.data.split("<p><h4>Power: ");
         power = power[1].split("</h4></p>");
         /*var coil1 = res.data.split("<tr><td>1.</td><td>");
         coil1 = coil1[1].split("</td></tr>");
