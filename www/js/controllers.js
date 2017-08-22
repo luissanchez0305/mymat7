@@ -1579,7 +1579,7 @@
     
     var testInterval;
     // check if mymat is connected
-    MyMat.test().then(function successCallback(response) {
+    /*MyMat.test().then(function successCallback(response) {
             // if is connected quitar imagen, textos y loading y poner status del mat
             showStatus(response);
         }, function errorCallback(response,obj) {
@@ -1593,7 +1593,8 @@
 			        console.log(response);
 		        });
             }, 5000);
-    });
+    });*/
+    MyMat.test().then(function(res){ gapAlert(res, res.length) });
     
     showStatus = function(response){
         $('.activate-wifi-container').hide();
