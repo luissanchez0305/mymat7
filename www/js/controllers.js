@@ -1607,7 +1607,11 @@
         coil3 = coil3[2].split("</td></tr>");
         var coil4 = response.data.split("<tr><td>4.</td><td>");
         coil4 = coil4[2].split("</td></tr>");
-        gapAlert(power[0] + ' ' + coil1 + ' ' + coil2 + ' ' + coil3 + ' ' + coil4);
+        $('#batery').html(power[0]);
+        $('#coil1').html(coil1[0]);
+        $('#coil2').html(coil2[0]);
+        $('#coil3').html(coil3[0]);
+        $('#coil4').html(coil4[0]);
     }
     
     showActivateWifi = function(){
