@@ -1594,7 +1594,9 @@
 		        });
             }, 5000);
     });*/
-    MyMat.test().then(function(res){ gapAlert(res, res.length) });
+    MyMat.test().then(function(res){ 
+        gapAlert(res, res.length);
+    });
     
     showStatus = function(response){
         $('.activate-wifi-container').hide();
