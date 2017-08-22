@@ -1590,9 +1590,9 @@
                 MyMat.test().then(function successCallback(response) {
                     showStatus(response,obj);
                 }, function errorCallback(response) {
-			console.log(response);
-		});
-            }, 2000);
+			        console.log(response);
+		        });
+            }, 5000);
     });
     
     showStatus = function(response){
