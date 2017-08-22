@@ -1582,13 +1582,13 @@
     MyMat.test().then(function successCallback(response) {
             // if is connected quitar imagen, textos y loading y poner status del mat
             showStatus(response);
-        }, function errorCallback(response) {
+        }, function errorCallback(response,obj) {
             // if not display loading y quitar boton
             $('.activate-wifi-container').show();
             $('.mymat-status-container').hide();
             testInterval = setInterval(function(){
                 MyMat.test().then(function successCallback(response) {
-                    showStatus(response);
+                    showStatus(response,obj);
                 }, function errorCallback(response) {
 			console.log(response);
 		});
