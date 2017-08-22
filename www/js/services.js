@@ -80,7 +80,7 @@ angular.module('starter.services', [])
            return response;
       },
       test: function(){
-          var response = $http.get(myAppConfig.myMatApiUrl);
+          var response = $http.get(myAppConfig.myMatApiAddress);
            return response;
       }
   }
