@@ -11,6 +11,7 @@
     
     $scope.changeLang = $translate.preferredLanguage() == "es" ? "ENGLISH" : "ESPAÑOL";
     $scope.changeLangCode = $translate.preferredLanguage() == "es" ? "en" : "es";
+    $scope.coilText = translations[$translate.preferredLanguage()]['coil'];
     
     $scope.switchLang = function(code){
         localStorage.currentLang = code;
