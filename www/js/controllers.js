@@ -1588,7 +1588,9 @@
             testInterval = setInterval(function(){
                 MyMat.test().then(function successCallback(response) {
                     showStatus(response);
-                });
+                }, function errorCallback(response) {
+			console.log(response);
+		});
             }, 2000);
     });
     
