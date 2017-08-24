@@ -1602,6 +1602,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                     showNoStatus();
                 }
                 intervalCount += 1;
+                $('.interval-counter').html(intervalCount * 10);
             }, 10000);
     });
     
