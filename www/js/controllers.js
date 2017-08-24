@@ -1637,10 +1637,15 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     
     showStatus = function(response){
         $('.activate-wifi-container').hide();
+        gapAlert("aqui 1;")
         $('.mymat-status-container').show();
+        gapAlert("aqui 2;")
         $('.status-table').show();
+        gapAlert("aqui 3;")
         $('.no-status-container').hide();
+        gapAlert("aqui 4;")
         clearInterval(testInterval);
+        gapAlert("aqui 5;")
         
         var power = response.data.split("<p><h4>Power: ");
         gapAlert(power);
