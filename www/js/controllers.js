@@ -1579,7 +1579,25 @@
     
     var testInterval;
     // check if mymat is connected
-    MyMat.test().then(function successCallback(response) {
+    var myMatTest = MyMat.text();
+    myMatTest.done(function(response) {
+            // if is connected quitar imagen, textos y loading y poner status del mat
+            showStatus(response);
+    }).fail(function(){
+            // if not display loading y quitar boton
+            $('.activate-wifi-container').show();
+            $('.mymat-status-container').hide();
+            testInterval = setInterval(function(){
+                var failMyMatTest = MyMat.test();
+                failMyMatTest.done(function(response){
+                    showStatus(response);
+                }).fail(function(response){
+			        console.log(response);
+                });
+            }, 10000);
+    });
+    
+    /*MyMat.test().then(function successCallback(response) {
             // if is connected quitar imagen, textos y loading y poner status del mat
             showStatus(response);
         }, function errorCallback(response) {
@@ -1593,7 +1611,7 @@
 			        console.log(response);
 		        });
             }, 10000);
-    });
+    });*/
     /*MyMat.test().then(function(res){ 
         gapAlert(res, res.length);
     }).error(function(data, status, headers, config){
