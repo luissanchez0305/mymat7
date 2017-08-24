@@ -1592,7 +1592,7 @@
                 }, function errorCallback(response) {
 			        console.log(response);
 		        });
-            }, 5000);
+            }, 10000);
     });
     /*MyMat.test().then(function(res){ 
         gapAlert(res, res.length);
