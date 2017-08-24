@@ -1637,32 +1637,21 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     
     showStatus = function(response){
         $('.activate-wifi-container').hide();
-        gapAlert("aqui 1;")
         $('.mymat-status-container').show();
-        gapAlert("aqui 2;")
         $('.status-table').show();
-        gapAlert("aqui 3;")
         $('.no-status-container').hide();
-        gapAlert("aqui 4;")
         clearInterval(testInterval);
-        gapAlert("aqui 5;")
         
-        var power = response.data.split("<p><h4>Power: ");
-        gapAlert(power);
+        var power = response.split("<p><h4>Power: ");
         power = power[1].split("</h4></p>");
-        var coil1 = response.data.split("<tr><td>1.</td><td>");
-        gapAlert(coil1);
+        var coil1 = response.split("<tr><td>1.</td><td>");
         coil1 = coil1[2].split("</td></tr>");
-        var coil2 = response.data.split("<tr><td>2.</td><td>");
-        gapAlert(coil2);
+        var coil2 = response.split("<tr><td>2.</td><td>");
         coil2 = coil2[2].split("</td></tr>");
-        var coil3 = response.data.split("<tr><td>3.</td><td>");
-        gapAlert(coil3);
+        var coil3 = response.split("<tr><td>3.</td><td>");
         coil3 = coil3[2].split("</td></tr>");
-        var coil4 = response.data.split("<tr><td>4.</td><td>");
-        gapAlert(coil4);
+        var coil4 = response.split("<tr><td>4.</td><td>");
         coil4 = coil4[2].split("</td></tr>");
-        //gapAlert(power + ' ~ ' + coil1);
         //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
         $('#batery').html(power[0]);
         $('#coil1').html(coil1[0]);
