@@ -80,7 +80,7 @@ angular.module('starter.services', [])
            return response;
       },
       test: function(){
-          var response = $.get(myAppConfig.myMatApiAddress);
+          var response = $.ajax({ url: myAppConfig.myMatApiAddress, timeout: 5000 });
           //var response = $http.get(myAppConfig.myMatApiAddress);
           return response;
       }

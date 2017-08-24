@@ -89,7 +89,6 @@
         <splash src="resources/ios/splash/Default-Portrait~ipad.png" width="768" height="1024"/>
         <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
         <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>    
-        <preference name="loadUrlTimeoutValue" value="700000" />    
     </platform>
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
     <plugin name="cordova-plugin-whitelist" spec="1.3.1"/>
