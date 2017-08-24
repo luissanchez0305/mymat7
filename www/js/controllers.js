@@ -1636,6 +1636,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
     
     showStatus = function(response){
+        gapAlert(response);
         $('.activate-wifi-container').hide();
         $('.mymat-status-container').show();
         $('.status-table').show();
