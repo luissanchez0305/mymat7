@@ -1599,7 +1599,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                     });
                 }
                 else {
-                    showStatus();
+                    showNoStatus();
                 }
                 intervalCount += 1;
             }, 10000);
