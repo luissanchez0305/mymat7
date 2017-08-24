@@ -1579,7 +1579,7 @@
     
     var testInterval;
     // check if mymat is connected
-    var myMatTest = MyMat.text();
+    var myMatTest = MyMat.test();
     myMatTest.done(function(response) {
             // if is connected quitar imagen, textos y loading y poner status del mat
             showStatus(response);
