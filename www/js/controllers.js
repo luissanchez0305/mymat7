@@ -1652,7 +1652,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         coil3 = coil3[2].split("</td></tr>");
         var coil4 = response.data.split("<tr><td>4.</td><td>");
         coil4 = coil4[2].split("</td></tr>");
-        gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
+        gapAlert(power + ' ~ ' + coil1);
+        //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
         $('#batery').html(power[0]);
         $('#coil1').html(coil1[0]);
         $('#coil2').html(coil2[0]);
