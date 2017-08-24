@@ -1,4 +1,4 @@
-﻿angular.module('starter.controllers', ['pascalprecht.translate'])
+angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, myAppConfig, Languages) {
 
@@ -1587,13 +1587,21 @@
             // if not display loading y quitar boton
             $('.activate-wifi-container').show();
             $('.mymat-status-container').hide();
+            var intervalCount = 0;
             testInterval = setInterval(function(){
-                var failMyMatTest = MyMat.test();
-                failMyMatTest.done(function(response){
-                    showStatus(response);
-                }).fail(function(response){
-			        console.log(response);
-                });
+                // timeout of mymat detection 70 segundos
+                if(intervalCount < 7) {
+                    var failMyMatTest = MyMat.test();
+                    failMyMatTest.done(function(response){
+                        showStatus(response);
+                    }).fail(function(response){
+    			        console.log(response);
+                    });
+                }
+                else {
+                    showStatus();
+                }
+                intervalCount += 1;
             }, 10000);
     });
     
@@ -1618,9 +1626,19 @@
         gapAlert(status);
     });*/
     
+    showNoStatus = function(){
+        $('.activate-wifi-container').hide();
+        $('.mymat-status-container').show();
+        $('.status-table').hide();
+        $('.no-status-container').show();
+        clearInterval(testInterval);
+    }
+    
     showStatus = function(response){
         $('.activate-wifi-container').hide();
         $('.mymat-status-container').show();
+        $('.status-table').show();
+        $('.no-status-container').hide();
         clearInterval(testInterval);
         
         var power = response.data.split("<p><h4>Power: ");

@@ -8,11 +8,11 @@
             <br>  
             <p translate="activate-wifi-1">Press your phone’s settings button, and navigate to your Wi-Fi settings.</p>
             <p translate="activate-wifi-2">Select the MyMat Network and verify the connection is established.</p>
-            <!--<img src="img/loading.gif" width="200" />-->
+            <img src="img/loading.gif" width="200" />
             <a class="greenbtn start-routine" menu-close nav-transition="ios" nav-direction="forward" href="#/app/nowplaying" translate="start-routine">LAUNCH MYMAT</a>
         </div>
         <div class="mymat-status-container" style="display:none;">
-            <div class="divTable">
+            <div class="status-table divTable">
                 <div class="divTableHeading">
                     <div class="divTableRow">
                         <div class="divTableHead">
@@ -39,6 +39,13 @@
                         <div class="divTableCell" id="coil4">OK</div>
                     </div>
                 </div>
+            </div>
+            <div class="no-status-container" style="display:none;">
+                <img src="img/wifi.png">
+                <div class="titleinstructions" translate="start-your-routine">START YOUR ROUTINE</div>
+                <br>  
+                <p translate="no-detect-1">We were unable to detect your MyMat</p>
+                <p translate="no-detect-2">If you already connected your MyMat you can start your routine by pressing the bellow button</p>
             </div>
             <p>&nbsp;</p>
             <a class="greenbtn start-routine" menu-close nav-transition="ios" nav-direction="forward" href="#/app/nowplaying" translate="start-routine">LAUNCH MYMAT</a>
