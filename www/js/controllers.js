@@ -12,6 +12,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.passwordText = translations[$translate.preferredLanguage()]['password'];    
     $scope.changeLang = $translate.preferredLanguage() == "es" ? "ENGLISH" : "ESPAÑOL";
     $scope.changeLangCode = $translate.preferredLanguage() == "es" ? "en" : "es";
+    $scope.coilText = translations[$translate.preferredLanguage()]['coil'];
     
     $scope.switchLang = function(code){
         localStorage.currentLang = code;
@@ -1428,7 +1429,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             },
         {
             category: 'elements',
-            name: translationsRoutines[$translate.preferredLanguage()]['liver-function-upper'],
+            name: translationsRoutines[$translate.preferredLanguage()]['heart-function-upper'],
             programs: [
 
                  getOfflinePorgramObject("Heart_Meridian"),
@@ -1569,8 +1570,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 })
 
-
-
 .controller('MyAccountViewController', function ($scope, User, $location) {
 
     User.isUserLoggedIn().then(function (res) {
@@ -1603,16 +1602,108 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 })
 
 
-.controller('WifiScanViewController', function ($scope) {
+.controller('WifiScanViewController', function ($scope, MyMat) {
 
     //scanForWifi();
-
-    function scanForWifi() {
-        WifiWizard.startScan(
+    $scope.scanForWifi = function () {
+        /*WifiWizard.startScan(
             function (res) {},
             function (error) {}
-        );
+        );*/
+	alert(WifiWizard);
+        WifiWizard.getCurrentSSID(function(handler){
+            alert(handler.SSID);
+        }, fail);
+    };
+    
+    var testInterval;
+    // check if mymat is connected
+    var myMatTest = MyMat.test();
+    myMatTest.done(function(response) {
+            // if is connected quitar imagen, textos y loading y poner status del mat
+            showStatus(response);
+    }).fail(function(){
+            // if not display loading y quitar boton
+            $('.activate-wifi-container').show();
+            $('.mymat-status-container').hide();
+            var intervalCount = 0;
+            testInterval = setInterval(function(){
+                // timeout of mymat detection 70 segundos
+                if(intervalCount < 7) {
+                    var failMyMatTest = MyMat.test();
+                    failMyMatTest.done(function(response){
+                        showStatus(response);
+                    }).fail(function(response){
+    			        console.log(response);
+                    });
+                }
+                else {
+                    showNoStatus();
+                }
+                intervalCount += 1;
+                $('.interval-counter').html(intervalCount * 10);
+            }, 10000);
+    });
+    
+    /*MyMat.test().then(function successCallback(response) {
+            // if is connected quitar imagen, textos y loading y poner status del mat
+            showStatus(response);
+        }, function errorCallback(response) {
+            // if not display loading y quitar boton
+            $('.activate-wifi-container').show();
+            $('.mymat-status-container').hide();
+            testInterval = setInterval(function(){
+                MyMat.test().then(function successCallback(response) {
+                    showStatus(response);
+                }, function errorCallback(response) {
+			        console.log(response);
+		        });
+            }, 10000);
+    });*/
+    /*MyMat.test().then(function(res){ 
+        gapAlert(res, res.length);
+    }).error(function(data, status, headers, config){
+        gapAlert(status);
+    });*/
+    
+    showNoStatus = function(){
+        $('.activate-wifi-container').hide();
+        $('.mymat-status-container').show();
+        $('.status-table').hide();
+        $('.no-status-container').show();
+        clearInterval(testInterval);
     }
+    
+    showStatus = function(response){
+        $('.activate-wifi-container').hide();
+        $('.mymat-status-container').show();
+        $('.status-table').show();
+        $('.no-status-container').hide();
+        clearInterval(testInterval);
+        
+        var power = response.split("<p><h4>Power: ");
+        power = power[1].split("</h4></p>");
+        var coil1 = response.split("<tr><td>1.</td><td>");
+        coil1 = coil1[2].split("</td></tr>");
+        var coil2 = response.split("<tr><td>2.</td><td>");
+        coil2 = coil2[2].split("</td></tr>");
+        var coil3 = response.split("<tr><td>3.</td><td>");
+        coil3 = coil3[2].split("</td></tr>");
+        var coil4 = response.split("<tr><td>4.</td><td>");
+        coil4 = coil4[2].split("</td></tr>");
+        //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
+        $('#batery').html(power[0]);
+        $('#coil1').html(coil1[0]);
+        $('#coil2').html(coil2[0]);
+        $('#coil3').html(coil3[0]);
+        $('#coil4').html(coil4[0]);
+    }
+    
+    showActivateWifi = function(){
+        $('.activate-wifi-container').show();
+        $('.mymat-status-container').hide();
+    }
+    
 
 })
 
