@@ -1582,28 +1582,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     var myMatTest = MyMat.test();
     myMatTest.done(function(response) {
             // if is connected quitar imagen, textos y loading y poner status del mat
-            showStatus(response);
+            if(verifyValues(response))
+                showStatus(response);
+            else
+                failVerification();
+            
     }).fail(function(){
-            // if not display loading y quitar boton
-            $('.activate-wifi-container').show();
-            $('.mymat-status-container').hide();
-            var intervalCount = 0;
-            testInterval = setInterval(function(){
-                // timeout of mymat detection 70 segundos
-                if(intervalCount < 7) {
-                    var failMyMatTest = MyMat.test();
-                    failMyMatTest.done(function(response){
-                        showStatus(response);
-                    }).fail(function(response){
-    			        console.log(response);
-                    });
-                }
-                else {
-                    showNoStatus();
-                }
-                intervalCount += 1;
-                $('.interval-counter').html(intervalCount * 10);
-            }, 10000);
+        failVerification();
     });
     
     /*MyMat.test().then(function successCallback(response) {
@@ -1641,23 +1626,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $('.status-table').show();
         $('.no-status-container').hide();
         clearInterval(testInterval);
-        
-        var power = response.split("<p><h4>Power: ");
-        power = power[1].split("</h4></p>");
-        var coil1 = response.split("<tr><td>1.</td><td>");
-        coil1 = coil1[2].split("</td></tr>");
-        var coil2 = response.split("<tr><td>2.</td><td>");
-        coil2 = coil2[2].split("</td></tr>");
-        var coil3 = response.split("<tr><td>3.</td><td>");
-        coil3 = coil3[2].split("</td></tr>");
-        var coil4 = response.split("<tr><td>4.</td><td>");
-        coil4 = coil4[2].split("</td></tr>");
-        //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
-        $('#batery').html(power[0]);
-        $('#coil1').html(coil1[0]);
-        $('#coil2').html(coil2[0]);
-        $('#coil3').html(coil3[0]);
-        $('#coil4').html(coil4[0]);
     }
     
     showActivateWifi = function(){
@@ -1665,6 +1633,53 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $('.mymat-status-container').hide();
     }
     
+    verifyValues = function(response){
+        if(response.indexOf("<p><h4>Power: ") > -1){
+            var power = response.split("<p><h4>Power: ");
+            power = power[1].split("</h4></p>");
+            var coil1 = response.split("<tr><td>1.</td><td>");
+            coil1 = coil1[2].split("</td></tr>");
+            var coil2 = response.split("<tr><td>2.</td><td>");
+            coil2 = coil2[2].split("</td></tr>");
+            var coil3 = response.split("<tr><td>3.</td><td>");
+            coil3 = coil3[2].split("</td></tr>");
+            var coil4 = response.split("<tr><td>4.</td><td>");
+            coil4 = coil4[2].split("</td></tr>");
+            //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
+            $('#batery').html(power[0]);
+            $('#coil1').html(coil1[0]);
+            $('#coil2').html(coil2[0]);
+            $('#coil3').html(coil3[0]);
+            $('#coil4').html(coil4[0]);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    failVerification = function(){
+            // if not display loading y quitar boton
+            $('.activate-wifi-container').show();
+            $('.mymat-status-container').hide();
+            var intervalCount = 0;
+            testInterval = setInterval(function(){
+                // timeout of mymat detection 70 segundos
+                if(intervalCount < 7) {
+                    var failMyMatTest = MyMat.test();
+                    failMyMatTest.done(function(response){
+                        if(verifyValues(response))
+                            showStatus(response);
+                    }).fail(function(response){
+    			        console.log(response);
+                    });
+                }
+                else {
+                    showNoStatus();
+                }
+                intervalCount += 1;
+                $('.interval-counter').html(intervalCount * 10);
+            }, 10000);
+    }
 
 })
 
