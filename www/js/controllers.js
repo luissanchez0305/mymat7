@@ -1645,19 +1645,20 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             coil3 = coil3[2].split("</td></tr>");
             var coil4 = response.split("<tr><td>4.</td><td>");
             coil4 = coil4[2].split("</td></tr>");
-            
-            $('#battery').html(power[0] + " <img id=\"batteryImg\" height=\"17\" />");
-            var powerInt = parseInt(power[0].substr(0,power[0].length-1));
-            if(powerInt > 75)
-                $('#batteryImg').attr('src','img/b100.png');
-            else if(powerInt > 50)
-                $('#batteryImg').attr('src','img/b75.png');
-            else if(powerInt > 25)
-                $('#batteryImg').attr('src','img/b50.png');
-            else if(powerInt > 10)
-                $('#batteryImg').attr('src','img/b25.png');
+            //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
+            $('#battery').html(power[0] + ' <img id="batteryImg" height="16">');
+            var powerVal = power[0].substr(0,power[0].length-1);
+            if(powerVal > 75)
+                $('#batteryImg').attr('src', 'img/b100.png');
+            else if(powerVal > 50)
+                $('#batteryImg').attr('src', 'img/b75.png');
+            else if(powerVal > 25)
+                $('#batteryImg').attr('src', 'img/b50.png');
+            else if(powerVal > 10)
+                $('#batteryImg').attr('src', 'img/b25.png');
             else
-                $('#batteryImg').attr('src','img/b10.png');
+                $('#batteryImg').attr('src', 'img/b10.png');
+                
             $('#coil1').html(coil1[0]);
             $('#coil2').html(coil2[0]);
             $('#coil3').html(coil3[0]);

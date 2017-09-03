@@ -879,7 +879,7 @@ position: absolute;
 }
 .divTableHeading h4  {
 	color: #fff;
-	font-size: 160%;
+	font-size: 200%;
 }
 .divTableCell.coilOdd {
     background-color: #9fd0dd!important;
@@ -888,10 +888,6 @@ position: absolute;
     border-radius: 0px 5px 0px 0px;
     padding: 0px;
 }
-/*.divTableCellFirstRight img {
-    height: 20%;
-    width: 20%;
-}*/
 .divTableCellFirstLeft{
     border-radius: 5px 0px 0px 0px;
 }
