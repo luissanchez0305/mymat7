@@ -168,7 +168,7 @@ var translations = {
         "activate-wifi-1" : "Presiona el botón de Configuracion en tu dispositivo, y escoge la opción de Wi-Fi.",
         "activate-wifi-2" : "Selecciona la Red de MyMat y verifica la conección establecida.",
         "start-routine" : "COMIENZA LA RUTINA",
-        "battery-power" : "Estado de la bater&iacute;a",
+        "battery-power" : "Bater&iacute;a",
         "coil": "Antena",
         "start-your-routine" : "INICIA TU RUTINA",
         "no-detect-1" : "No pudimos detectar tu MyMat",

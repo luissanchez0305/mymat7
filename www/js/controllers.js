@@ -1621,8 +1621,73 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     var myMatTest = MyMat.test();
     myMatTest.done(function(response) {
             // if is connected quitar imagen, textos y loading y poner status del mat
-            showStatus(response);
+            if(verifyValues(response))
+                showStatus();
+            else
+                failVerification();
+            
     }).fail(function(){
+        failVerification();
+    });
+    
+    showNoStatus = function(){
+        $('.activate-wifi-container').hide();
+        $('.mymat-status-container').show();
+        $('.status-table').hide();
+        $('.no-status-container').show();
+        clearInterval(testInterval);
+    }
+    
+    showStatus = function(){
+        $('.activate-wifi-container').hide();
+        $('.mymat-status-container').show();
+        $('.status-table').show();
+        $('.no-status-container').hide();
+        clearInterval(testInterval);
+    }
+    
+    showActivateWifi = function(){
+        $('.activate-wifi-container').show();
+        $('.mymat-status-container').hide();
+    }
+    
+    verifyValues = function(response){
+        if(response.indexOf("<p><h4>Power: ") > -1){
+            var power = response.split("<p><h4>Power: ");
+            power = power[1].split("</h4></p>");
+            var coil1 = response.split("<tr><td>1.</td><td>");
+            coil1 = coil1[2].split("</td></tr>");
+            var coil2 = response.split("<tr><td>2.</td><td>");
+            coil2 = coil2[2].split("</td></tr>");
+            var coil3 = response.split("<tr><td>3.</td><td>");
+            coil3 = coil3[2].split("</td></tr>");
+            var coil4 = response.split("<tr><td>4.</td><td>");
+            coil4 = coil4[2].split("</td></tr>");
+            //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
+            $('#battery').html(power[0] + ' <img id="batteryImg" height="16">');
+            var powerVal = power[0].substr(0,power[0].length-1);
+            if(powerVal > 75)
+                $('#batteryImg').attr('src', 'img/b100.png');
+            else if(powerVal > 50)
+                $('#batteryImg').attr('src', 'img/b75.png');
+            else if(powerVal > 25)
+                $('#batteryImg').attr('src', 'img/b50.png');
+            else if(powerVal > 10)
+                $('#batteryImg').attr('src', 'img/b25.png');
+            else
+                $('#batteryImg').attr('src', 'img/b10.png');
+                
+            $('#coil1').html(coil1[0]);
+            $('#coil2').html(coil2[0]);
+            $('#coil3').html(coil3[0]);
+            $('#coil4').html(coil4[0]);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    failVerification = function(){
             // if not display loading y quitar boton
             $('.activate-wifi-container').show();
             $('.mymat-status-container').hide();
@@ -1632,7 +1697,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 if(intervalCount < 7) {
                     var failMyMatTest = MyMat.test();
                     failMyMatTest.done(function(response){
-                        showStatus(response);
+                        if(verifyValues(response))
+                            showStatus(response);
                     }).fail(function(response){
     			        console.log(response);
                     });
@@ -1643,67 +1709,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 intervalCount += 1;
                 $('.interval-counter').html(intervalCount * 10);
             }, 10000);
-    });
-    
-    /*MyMat.test().then(function successCallback(response) {
-            // if is connected quitar imagen, textos y loading y poner status del mat
-            showStatus(response);
-        }, function errorCallback(response) {
-            // if not display loading y quitar boton
-            $('.activate-wifi-container').show();
-            $('.mymat-status-container').hide();
-            testInterval = setInterval(function(){
-                MyMat.test().then(function successCallback(response) {
-                    showStatus(response);
-                }, function errorCallback(response) {
-			        console.log(response);
-		        });
-            }, 10000);
-    });*/
-    /*MyMat.test().then(function(res){ 
-        gapAlert(res, res.length);
-    }).error(function(data, status, headers, config){
-        gapAlert(status);
-    });*/
-    
-    showNoStatus = function(){
-        $('.activate-wifi-container').hide();
-        $('.mymat-status-container').show();
-        $('.status-table').hide();
-        $('.no-status-container').show();
-        clearInterval(testInterval);
     }
-    
-    showStatus = function(response){
-        $('.activate-wifi-container').hide();
-        $('.mymat-status-container').show();
-        $('.status-table').show();
-        $('.no-status-container').hide();
-        clearInterval(testInterval);
-        
-        var power = response.split("<p><h4>Power: ");
-        power = power[1].split("</h4></p>");
-        var coil1 = response.split("<tr><td>1.</td><td>");
-        coil1 = coil1[2].split("</td></tr>");
-        var coil2 = response.split("<tr><td>2.</td><td>");
-        coil2 = coil2[2].split("</td></tr>");
-        var coil3 = response.split("<tr><td>3.</td><td>");
-        coil3 = coil3[2].split("</td></tr>");
-        var coil4 = response.split("<tr><td>4.</td><td>");
-        coil4 = coil4[2].split("</td></tr>");
-        //gapAlert(power[0] + ' ' + coil1[0] + ' ' + coil2[0] + ' ' + coil3[0] + ' ' + coil4[0]);
-        $('#batery').html(power[0]);
-        $('#coil1').html(coil1[0]);
-        $('#coil2').html(coil2[0]);
-        $('#coil3').html(coil3[0]);
-        $('#coil4').html(coil4[0]);
-    }
-    
-    showActivateWifi = function(){
-        $('.activate-wifi-container').show();
-        $('.mymat-status-container').hide();
-    }
-    
 
 })
 

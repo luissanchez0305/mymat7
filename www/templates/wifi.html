@@ -1,4 +1,4 @@
-﻿<ion-view title='<div class="logo"></div>' class="home center">
+<ion-view title='<div class="logo"></div>' class="home center">
 
     <ion-content class="padding">
         <br>
@@ -15,10 +15,13 @@
             <div class="status-table divTable">
                 <div class="divTableHeading">
                     <div class="divTableRow">
-                        <div class="divTableHead">
-                            <h2 translate="battery-power"></h2>
+                        <div class="divTableHead divTableCellFirstLeft">
+                            <h4 translate="battery-power"></h4>
                         </div>
-                        <div class="divTableHead"><h4 id="batery">0%</h4></div>
+                        <div class="divTableHead divTableCellFirstRight">
+                            <h4 id="battery">0% <img id="batteryImg" height="16"></h4>
+                            
+                        </div>
                     </div>
                 </div>
                 <div class="divTableBody">
@@ -27,16 +30,16 @@
                         <div class="divTableCell" id="coil1">N/A</div>
                     </div>
                     <div class="divTableRow">
-                        <div class="divTableCell">{{ coilText }} 2</div>
-                        <div class="divTableCell" id="coil2">N/A</div>
+                        <div class="divTableCell coilOdd">{{ coilText }} 2</div>
+                        <div class="divTableCell coilOdd" id="coil2">N/A</div>
                     </div>
                     <div class="divTableRow">
                         <div class="divTableCell">{{ coilText }} 3</div>
                         <div class="divTableCell" id="coil3">N/A</div>
                     </div>
                     <div class="divTableRow">
-                        <div class="divTableCell">{{ coilText }} 4</div>
-                        <div class="divTableCell" id="coil4">N/A</div>
+                        <div class="divTableCell coilOdd divTableCellLastLeft">{{ coilText }} 4</div>
+                        <div class="divTableCell coilOdd divTableCellLastRight" id="coil4">N/A</div>
                     </div>
                 </div>
             </div>
