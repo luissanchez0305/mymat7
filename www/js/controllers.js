@@ -1591,27 +1591,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         failVerification();
     });
     
-    /*MyMat.test().then(function successCallback(response) {
-            // if is connected quitar imagen, textos y loading y poner status del mat
-            showStatus(response);
-        }, function errorCallback(response) {
-            // if not display loading y quitar boton
-            $('.activate-wifi-container').show();
-            $('.mymat-status-container').hide();
-            testInterval = setInterval(function(){
-                MyMat.test().then(function successCallback(response) {
-                    showStatus(response);
-                }, function errorCallback(response) {
-			        console.log(response);
-		        });
-            }, 10000);
-    });*/
-    /*MyMat.test().then(function(res){ 
-        gapAlert(res, res.length);
-    }).error(function(data, status, headers, config){
-        gapAlert(status);
-    });*/
-    
     showNoStatus = function(){
         $('.activate-wifi-container').hide();
         $('.mymat-status-container').show();
