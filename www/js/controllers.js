@@ -2196,12 +2196,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 
 
-.controller('ForgotPasswordViewController', function ($scope, $ionicModal, User, Program) {
+.controller('ForgotPasswordViewController', function ($scope, $ionicModal, $translate, User, Program) {
 
     $scope.user = {};
 
     $scope.sendPasswordReminder = function () {
-        if($scope.user.email.length > 0){
+        if($scope.user.email){
             User.sendPasswordReminder($scope.user.email).then(function (result) {
                 $('.recover-button').hide();
                 $('.email-text').hide();
