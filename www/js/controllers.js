@@ -2201,11 +2201,14 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.user = {};
 
     $scope.sendPasswordReminder = function () {
-        User.sendPasswordReminder($scope.user.email).then(function (result) {
-            $('.recover-button').hide();
-            $('.email-text').hide();
-            $('#email-sent').show();
-        });
+        if($scope.user.email.length > 0){
+            User.sendPasswordReminder($scope.user.email).then(function (result) {
+                $('.recover-button').hide();
+                $('.email-text').hide();
+                $('#email-sent').show();
+            });
+        else
+            gapAlert(translations[$translate.preferredLanguage()]['introduce-email'], )
     }
 
 
