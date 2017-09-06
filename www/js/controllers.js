@@ -2202,7 +2202,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     $scope.sendPasswordReminder = function () {
         User.sendPasswordReminder($scope.user.email).then(function (result) {
-            gapAlert($('#email-sent').html());
+            $('.recover-button').hide();
+            $('.email-text').hide();
+            $('.email-sent').show();
         });
     }
 
