@@ -2204,7 +2204,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         User.sendPasswordReminder($scope.user.email).then(function (result) {
             $('.recover-button').hide();
             $('.email-text').hide();
-            $('.email-sent').show();
+            $('#email-sent').show();
         });
     }
 
