@@ -2207,8 +2207,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 $('.email-text').hide();
                 $('#email-sent').show();
             });
+        }
         else
-            gapAlert(translations[$translate.preferredLanguage()]['introduce-email'], )
+            gapAlert(translations[$translate.preferredLanguage()]['introduce-email'], translations[$translate.preferredLanguage()]['missing-email'])
     }
 
 
