@@ -3,7 +3,7 @@ angular.module('config', [])
 .constant('myAppConfig', 
   {
   	ver: '1.0', 
-  	mainApiUrl: 'http://52.38.113.207:8080/php/api/',
+  	mainApiUrl: 'http://www.mymat.life/api/',
   	myMatApiUrl:'http://192.168.1.3/start.htm',
   	myMatApiAddress:'http://192.168.1.3/index.htm',
   	contentfulSpaceId: 'f0tgihb1aq4e',

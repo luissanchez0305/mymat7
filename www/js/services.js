@@ -33,7 +33,7 @@ angular.module('starter.services', [])
         return $http.get(url);
     },
     sendPasswordReminder : function(email) {
-        var url = myAppConfig.mainApiUrl+"forget_password.php?email="+email;
+        var url = myAppConfig.mainApiUrl+"forget_password.php?action=send&email="+email;
         return $http.get(url);
     },
     registerWithFacebook: function(email, fbid, birthday, gender) {

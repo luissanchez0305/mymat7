@@ -2155,8 +2155,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 
 .controller('FavoritesViewController', function ($scope, $location, $timeout, $window, Program) {
-
-
     $scope.favorites = {};
     $timeout(function () {
         getUserFavoritePrograms();
