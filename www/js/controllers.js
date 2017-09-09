@@ -1870,7 +1870,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         localStorage.bubbleRoutineProgram4 = "";
         $scope.bubblesNames[3] = "";
         $timeout(function () {
-            teBubblesState();
+            updateBubblesState();
         }, 100);
     }
 
@@ -1894,7 +1894,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             return false;
         }
     }
-
     function attachNamesToBubbles() {
 
 
