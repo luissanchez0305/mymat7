@@ -111,7 +111,7 @@ angular.module('starter.services', [])
         saveCurrentRoutine: function(programs) {
             var url = myAppConfig.mainApiUrl+"save_current_routine.php";
             var data = programs;
-            return $http.get(url, data)
+            return $http.post(url, data)
         },
         getRoutinePrograms: function() {
             
