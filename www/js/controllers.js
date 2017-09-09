@@ -49,12 +49,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         setTimeout(function(){$location.path('app/routines')},2000);
     }
     else{
-        //logoutObjects();
+        logoutObjects();
         
         if(localStorage.DisplayLoginView == 'true'){
-            // descomentar para irse a login en caso que no este logueado
-            //$location.path('app/login');
-            $location.path('app/home');
+            $location.path('app/login');
             localStorage.DisplayLoginView = false;
         }
     }
