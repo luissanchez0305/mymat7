@@ -188,6 +188,17 @@ left: -2px !important;
     width: 220px;
 }
 
+.graybtn{
+    background-color: #bbadae;
+    border: none;
+    color: #FFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-decoration: none;
+}
+
 .bluebtn {
     background-color: #262261;
     border: none;

@@ -1858,6 +1858,15 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             gapAlert('Please add four programs to your routine', 'Could not run routine');
         }
     }
+    
+    $scope.cleanRoutine = function(){
+        localStorage.routineName = "";    
+        localStorage.bubbleRoutineProgram1 = "";
+        localStorage.bubbleRoutineProgram2 = "";
+        localStorage.bubbleRoutineProgram3 = "";
+        localStorage.bubbleRoutineProgram4 = "";
+        updateBubblesState();
+    }
 
     function areAllSlotsFull() {
         var counHelper = 0;
