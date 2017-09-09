@@ -49,10 +49,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         setTimeout(function(){$location.path('app/routines')},2000);
     }
     else{
-        logoutObjects();
+        //logoutObjects();
         
         if(localStorage.DisplayLoginView == 'true'){
-            $location.path('app/login');
+            // descomentar para irse a login en caso que no este logueado
+            //$location.path('app/login');
+            $location.path('app/home');
             localStorage.DisplayLoginView = false;
         }
     }
@@ -1708,7 +1710,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 }
                 intervalCount += 1;
                 $('.interval-counter').html(intervalCount * 10);
-            }, 10000);
+            }, 10);
     }
 
 })
@@ -1933,27 +1935,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     }
 
-    $scope.saveCurrentRoutine = function () {
-        if (areAllSlotsFull()) {
-            var programs = {
-                routineName: $scope.routine.name,
-                program1: localStorage.bubbleRoutineProgram1,
-                program2: localStorage.bubbleRoutineProgram2,
-                program3: localStorage.bubbleRoutineProgram3,
-                program4: localStorage.bubbleRoutineProgram4,
-            };
-            Program.saveCurrentRoutine(programs).then(function (result) {
-                if (result.data.status == "ok") {
-                    gapAlert("Routine was saved !");
-                } else {
-                    gapAlert(result.data.error);
-                }
-            });
-        } else {
-            gapAlert('Please add four programs to your routine', "Coult not run routine");
-        }
-    }
-
     $scope.moreProgramInfo = function (programId, programName, programRunningTime, programDescription) {
         $scope.modal2.show();
         $scope.modalProgramId = programId;
@@ -2072,17 +2053,40 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }, 500);*/
 
     function initRoutine(programs) {
-
-        MyMat.startRoutine(programs).then(function (res) {
-            // extracting total time of routine from returned html page
-            var temp = res.data.split("<p><h3>Running time: ");
-            temp = temp[1].split("</h3></p>");
-            var runningTimeInSeconds = convertTimeToSecond(temp[0]);
-            $scope.totalRunningTime = runningTimeInSeconds;
-            console.log("total:" + $scope.totalRunningTime);
-            // extracting program 1 time
-        });
+            /*if($scope.isUserLogged){*/
+            var programsParams = {
+                urerEmail: $scope.userEmail,
+                routineName: $scope.routine.name,
+                program1: localStorage.bubbleRoutineProgram1,
+                program2: localStorage.bubbleRoutineProgram2,
+                program3: localStorage.bubbleRoutineProgram3,
+                program4: localStorage.bubbleRoutineProgram4,
+            };
+            Program.saveCurrentRoutine(programsParams).then(function (result) {
+                if (result.data.status == "ok") {
+                    gapAlert("Routine was saved !");
+                } else {
+                    gapAlert(result.data.error);
+                }
+            });
+                Program.saveCurrentRoutine(programs);
+                runRoutine(programs);
+            /*}
+            else
+                runRoutine(programs);*/
     };
+    
+    function runRoutine(programs){
+                MyMat.startRoutine(programs).then(function (res) {
+                    // extracting total time of routine from returned html page
+                    var temp = res.data.split("<p><h3>Running time: ");
+                    temp = temp[1].split("</h3></p>");
+                    var runningTimeInSeconds = convertTimeToSecond(temp[0]);
+                    $scope.totalRunningTime = runningTimeInSeconds;
+                    console.log("total:" + $scope.totalRunningTime);
+                    // extracting program 1 time
+                });
+    }
 
     function progressCircles() {
 

@@ -36,6 +36,10 @@ angular.module('starter.services', [])
         var url = myAppConfig.mainApiUrl+"forget_password.php?action=send&email="+email;
         return $http.get(url);
     },
+    sendCurrentPrograms : function(program1, program2, program3, program4, user){
+        var url = myAppConfig.mainApiUrl+"set_user_programs.php?P1="+program1+"&P2="+program2+"&P3="+program3+"&P4="+program4;
+        return $http.get(url);
+    },
     registerWithFacebook: function(email, fbid, birthday, gender) {
         var url = myAppConfig.mainApiUrl+"fb_session.php";
         var data = {
@@ -107,7 +111,7 @@ angular.module('starter.services', [])
         saveCurrentRoutine: function(programs) {
             var url = myAppConfig.mainApiUrl+"save_current_routine.php";
             var data = programs;
-            return $http.post(url, data)
+            return $http.get(url, data)
         },
         getRoutinePrograms: function() {
             
