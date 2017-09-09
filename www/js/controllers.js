@@ -1862,10 +1862,16 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.cleanRoutine = function(){
         localStorage.routineName = "";    
         localStorage.bubbleRoutineProgram1 = "";
+        $scope.bubblesNames[0] = "";
         localStorage.bubbleRoutineProgram2 = "";
+        $scope.bubblesNames[1] = "";
         localStorage.bubbleRoutineProgram3 = "";
+        $scope.bubblesNames[2] = "";
         localStorage.bubbleRoutineProgram4 = "";
-        updateBubblesState();
+        $scope.bubblesNames[3] = "";
+        $timeout(function () {
+            teBubblesState();
+        }, 100);
     }
 
     function areAllSlotsFull() {
