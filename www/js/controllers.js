@@ -1529,7 +1529,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             if (result.data.status == "ok") {
                 $location.path('app/routines');
                 loginObjects();
-                $scope.UserLoggedIn = true;
+                localStorage.UserLoggedIn = true;
             } else {
                 gapAlert("Some fields are not valid", "Registration Unsuccessful");
             }
@@ -1574,10 +1574,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     User.isUserLoggedIn().then(function (res) {
         if (res.data.status == "logged") {
-            $scope.isUserLogged = true;
-            $scope.userEmail = result.data.loggedUserEmail;
+            localStorage.isUserLogged = true;
+            localStorage.userEmail = result.data.loggedUserEmail;
         } else {
-            $scope.isUserLogged = false;
+            localStorage.isUserLogged = false;
         }
     });
 
@@ -1587,9 +1587,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
         User.attemptUserLogin($scope.loginData).then(function (result) {
             if (result.data.status == "ok") {
-                $scope.isUserLogged = true;
-                $scope.userEmail = result.data.loggedUserEmail;
                 loginObjects();
+                localStorage.userEmail = result.data.loggedUserEmail;
                 localStorage.UserLoggedIn = true;
                 
                 $location.path('app/routines');
@@ -1946,9 +1945,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
 
 
-    $scope.insertPreSetProgram = function (program1, program2, program3, program4) {
+    $scope.insertPreSetProgram = function (routineName, program1, program2, program3, program4) {
 
-
+        localStorage.routineName = routineName;
         $scope.selectBubble(1);
         $scope.addProgramToRoutine("", program1.name, program1.runningtime, program1.apiName);
 
@@ -2051,10 +2050,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }, 500);*/
 
     function initRoutine(programs) {
-            /*if($scope.isUserLogged){*/
+            /*if(localStorage.isUserLogged){*/
             var programsParams = {
-                urerEmail: $scope.userEmail,
-                routineName: $scope.routine.name,
+                userEmail: localStorage.userEmail,
+                routineName: localStorage.routineName,
                 program1: localStorage.bubbleRoutineProgram1,
                 program2: localStorage.bubbleRoutineProgram2,
                 program3: localStorage.bubbleRoutineProgram3,
