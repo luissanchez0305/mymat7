@@ -2064,30 +2064,29 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }, 500);*/
 
     function initRoutine(programs) {
-            /*if(localStorage.isUserLogged){*/
-            var programsParams = {
-                userEmail: localStorage.userEmail,
-                routineName: localStorage.routineName,
-                program1: localStorage.bubbleRoutineProgram1,
-                program2: localStorage.bubbleRoutineProgram2,
-                program3: localStorage.bubbleRoutineProgram3,
-                program4: localStorage.bubbleRoutineProgram4,
-            };
-            Program.saveCurrentRoutine(programsParams).then(function (result) {
-                if (result.data.status == "ok") {
-                    gapAlert("Routine was saved !");
-                } else {
-                    gapAlert(result.data.error);
-                }
-            });
-                Program.saveCurrentRoutine(programs);
-                runRoutine(programs);
-            /*}
+            if(localStorage.isUserLogged){
+                var programsParams = {
+                    userEmail: localStorage.userEmail,
+                    routineName: localStorage.routineName,
+                    program1: localStorage.bubbleRoutineProgram1,
+                    program2: localStorage.bubbleRoutineProgram2,
+                    program3: localStorage.bubbleRoutineProgram3,
+                    program4: localStorage.bubbleRoutineProgram4,
+                };
+                Program.saveCurrentRoutine(programsParams).then(function (result) {
+                    if (result.data.status == "ok") {
+                        gapAlert("Routine was saved !");
+                    } else {
+                        gapAlert(result.data.error);
+                    }
+                });
+                runThisRoutine(programs);
+            }
             else
-                runRoutine(programs);*/
+                runThisRoutine(programs);
     };
     
-    function runRoutine(programs){
+    function runThisRoutine(programs){
                 MyMat.startRoutine(programs).then(function (res) {
                     // extracting total time of routine from returned html page
                     var temp = res.data.split("<p><h3>Running time: ");
