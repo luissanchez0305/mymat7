@@ -1707,7 +1707,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 }
                 intervalCount += 1;
                 $('.interval-counter').html(intervalCount * 10);
-            }, 10);
+            }, 3000);
     }
 
 })
@@ -2075,7 +2075,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 };
                 Program.saveCurrentRoutine(programsParams).then(function (result) {
                     if (result.data.status == "ok") {
-                        gapAlert("Routine was saved !");
+                        console.log("Routine was saved !");
                     } else {
                         gapAlert(result.data.error);
                     }

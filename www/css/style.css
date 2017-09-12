@@ -67,6 +67,7 @@ margin-top: 25px !important;}
 
 .item-select select.gray-bg{
     background-color: #f1f1f1 !important;
+    max-width: 100%;
 }
 
 hr {
@@ -272,7 +273,7 @@ left: -2px !important;
     margin: auto;
     background-image: url(../img/gender.png);
     background-position: top left;
-    background-size: 300% 100%;
+    background-size: 200% 100%;
     background-repeat: no-repeat;
     padding-left: 50px!important;
 }
