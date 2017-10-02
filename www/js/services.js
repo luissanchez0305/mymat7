@@ -7,7 +7,7 @@ angular.module('starter.services', [])
   return {
     getUserData: function(userEmail) {
       var url = myAppConfig.mainApiUrl+"get_user_data.php";
-      return $http.post(url, { email: userEmail });
+      return $.post(url, { email: userEmail }, null, "json");
     },
     attemptUserLogin: function(loginData) {
         var url = myAppConfig.mainApiUrl+"login_user.php";
@@ -28,7 +28,10 @@ angular.module('starter.services', [])
            dateOfBirth : userData.dateOfBirth,
            pass: userData.pass,
            pass_confirm: userData.pass_confirm,
-           avatarFilename: sessionStorage.avatarFilename
+           avatarFilename: sessionStorage.avatarFilename,
+           isUpdate: userData.isUpdate,
+           first_name: userData.first_name,
+           last_name: userData.last_name
         };
         return $http.post(url, data);
     },

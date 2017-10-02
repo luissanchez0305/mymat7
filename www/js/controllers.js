@@ -1530,8 +1530,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     if(localStorage.UserLoggedIn == 'true'){
         $('#register-title').hide();
         $('#profile-title').show();
-        User.getUserData(localStorage.userEmail).then(function (result){
-            alert(result.data);
+        User.getUserData(localStorage.userEmail).done(function (result){
+            $('.email').val(result.email);
+            $('.email').attr('disabled','disabled');
+            $('.firstname').val(result.first_name);
+            $('.lastname').val(result.last_name);
+            $('.birth').val(result.date_birth);
+            $('.gender option[value="'+result.gender+'"]').prop('selected',true);
         });
     }
     else{
@@ -1539,7 +1544,20 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $('#profile-title').hide();
     }
     $scope.attemptRegistration = function () {
-        User.attemptUserRegistration($scope.userData).then(function (result) {
+        userData = $scope.userData;
+        
+        if(localStorage.UserLoggedIn == 'true'){
+            userData = { 
+                email: $('.email').val(), 
+                first_name: $('.firstname').val(),
+                last_name: $('.lastname').val(),
+                gender: $('.gender').find(":selected").val(),
+                dateOfBirth: $('.birth').val(),
+                isUpdate: '1',
+                pass: $('.pass').val()
+            }
+        }
+        User.attemptUserRegistration(userData).then(function (result) {
             if (result.data.status == "ok") {
                 $location.path('app/routines');
                 loginObjects();
