@@ -314,10 +314,10 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
 	  $translateProvider.preferredLanguage(localStorage.currentLang);
   }
   else {
-	  $translateProvider.preferredLanguage('es');
-	  localStorage.currentLang = "es";
+	  $translateProvider.preferredLanguage('en');
+	  localStorage.currentLang = "en";
   }
-	$translateProvider.fallbackLanguage('es');
+	$translateProvider.fallbackLanguage('en');
     
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
