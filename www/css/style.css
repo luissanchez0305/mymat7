@@ -65,6 +65,10 @@ margin-top: 25px !important;}
     color: #121212!important;
 }
 
+input.error, select.error, div.error {
+    background-color: #f00 !important;
+}
+
 .item-select select.gray-bg{
     background-color: #f1f1f1 !important;
     max-width: 100%;

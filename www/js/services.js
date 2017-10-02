@@ -5,6 +5,10 @@ angular.module('starter.services', [])
 .factory('User', function($http, myAppConfig) {
 
   return {
+    getUserData: function(userEmail) {
+      var url = myAppConfig.mainApiUrl+"get_user_data.php";
+      return $http.post(url, { email: userEmail });
+    },
     attemptUserLogin: function(loginData) {
         var url = myAppConfig.mainApiUrl+"login_user.php";
         return $http.post(url, {

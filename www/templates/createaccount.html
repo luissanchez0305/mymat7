@@ -4,32 +4,37 @@
             <div class="list card cardprogram">
                 <div class="item">
     
-                    <h2 translate="register">Register</h2>
+                    <h2 translate="register" id="register-title">Register</h2>
+                    <h2 translate="profile" id="profile-title">Profile</h2>
     
                 </div>
                 
                 <div class="item item-body">
-                    <div class="lorems lorems-content" translate="please-create-account">Please create an account</div>
-                    <!--<br>
+                    <!--<div class="lorems lorems-content" translate="please-create-account">Please create an account</div>
+                    <br>
                     <img ng-click="getPhoto()" id="profilepic" src="img/profilepic.png">
                     <br>
                     <div class="success2">TAP TO SELECT A PHOTO</div>
                     <br>
                     <input type="text" ng-model="" class="input username">-->
                     <br>
-                    <input type="text" ng-model="userData.email" placeholder="Email" class="input email" autocapitalize="none">
+                    <input type="text" ng-model="userData.email" placeholder="Email" class="input email" autocapitalize="none" onkeypress="$(this).removeClass('error')">
+                    <br>
+                    <input type="text" ng-model="userData.first_name" placeholder="{{ firstNameText }}" class="input username firstname" onkeypress="$(this).removeClass('error')">
+                    <br>
+                    <input type="text" ng-model="userData.last_name" placeholder="{{ lastNameText }}" class="input username firstname" onkeypress="$(this).removeClass('error')">
                     <br>
                     <div class="item item-input item-select gender small">
-                        <select class="gray-bg" ng-model="userData.gender"  placeholder="username">
+                        <select class="gray-bg" ng-model="userData.gender"  placeholder="Gender" onchange="$(this).removeClass('error')">
                             <option value="m" translate="male">Male</option>
                             <option value="f" translate="female">Female</option>
                         </select>
                     </div>
                     <!--<input type="text" ng-model="userData.gender"  class="input gender">-->
                     <br>
-                    <input type="date" style="width:210px;" ng-model="userData.dateOfBirth"  class="input birth">
+                    <input type="date" style="width:210px;" ng-model="userData.dateOfBirth"  class="input birth" onchange="$(this).removeClass('error')">
                     <br>
-                    <input type="password" ng-model="userData.pass" placeholder="{{ passwordText }}"  class="input pass">
+                    <input type="password" ng-model="userData.pass" placeholder="{{ passwordText }}"  class="input pass" onkeypress="$(this).removeClass('error')">
                     <!--<br>
                     <input type="password" ng-model="userData.pass_confirm"  class="input pass">-->
                     <br><br>

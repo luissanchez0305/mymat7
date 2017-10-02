@@ -9,6 +9,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
     
+    $scope.firstNameText = translations[$translate.preferredLanguage()]['first-name-text'];
+    $scope.lastNameText = translations[$translate.preferredLanguage()]['last-name-text'];
     $scope.passwordText = translations[$translate.preferredLanguage()]['password'];    
     $scope.changeLang = $translate.preferredLanguage() == "es" ? "ENGLISH" : "ESPAÑOL";
     $scope.changeLangCode = $translate.preferredLanguage() == "es" ? "en" : "es";
@@ -34,12 +36,14 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $('.menuitemhome.routinesMenuBtn').show();
         $('.menuitemusers.loginMenuBtn').hide();
         $('.menuitemusers.logoutMenuBtn').show();
+        $('.menuitemusers.profileMenuBtn').show();
     }   
     
     logoutObjects = function (){
         $('.menuitemhome.routinesMenuBtn').hide();
         $('.menuitemusers.loginMenuBtn').show();
         $('.menuitemusers.logoutMenuBtn').hide();
+        $('.menuitemusers.profileMenuBtn').hide();
     }
     
     // Revisar si el usuario esta logueado
@@ -1523,7 +1527,17 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 .controller('RegisterViewController', function ($scope, $location, $state, User) {
 
     $scope.userData = {};
-
+    if(localStorage.UserLoggedIn == 'true'){
+        $('#register-title').hide();
+        $('#profile-title').show();
+        User.getUserData(localStorage.userEmail).then(function (result){
+            alert(result.data);
+        });
+    }
+    else{
+        $('#register-title').show();
+        $('#profile-title').hide();
+    }
     $scope.attemptRegistration = function () {
         User.attemptUserRegistration($scope.userData).then(function (result) {
             if (result.data.status == "ok") {
@@ -1532,6 +1546,36 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 localStorage.UserLoggedIn = true;
             } else {
                 gapAlert("Some fields are not valid", "Registration Unsuccessful");
+                if(result.data.emailError != 'ok')
+                    $('.email').addClass('error')
+                else
+                    $('.email').removeClass('error')
+                    
+                if(result.data.first_nameError != 'ok')
+                    $('.firstname').addClass('error');
+                else 
+                    $('.firstname').removeClass('error');
+                    
+                if(result.data.last_nameError != 'ok')
+                    $('.lastname').addClass('error');
+                else
+                    $('.lastname').removeClass('error');
+                    
+                if(result.data.genderError != 'ok')
+                    $('.gender, .gender select').addClass('error');
+                else
+                    $('.gender, .gender select').removeClass('error');
+                    
+                if(result.data.dateOfBirthError != 'ok')
+                    $('.birth').addClass('error');
+                else
+                    $('.birth').removeClass('error');
+                    
+                if(result.data.passwordError != 'ok')
+                    $('.pass').addClass('error');
+                else
+                    $('.pass').removeClass('error');
+                
             }
         });
     };
