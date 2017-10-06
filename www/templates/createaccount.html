@@ -32,7 +32,8 @@
                     </div>
                     <!--<input type="text" ng-model="userData.gender"  class="input gender">-->
                     <br>
-                    <input type="date" style="width:210px;" ng-model="userData.dateOfBirth"  class="input birth" onchange="$(this).removeClass('error')">
+                    <label class="lorems lorems-content" translate="date-birth"></label>
+                    <input type="date" style="width:210px;" ng-model="userData.dateOfBirth"  class="input birth" onchange="$(this).removeClass('error')" max="{{ maxDatebirth }}" placeholder="{{ datebirthText }}">
                     <br>
                     <input type="password" ng-model="userData.pass" placeholder="{{ passwordText }}"  class="input pass" onkeypress="$(this).removeClass('error')">
                     <!--<br>

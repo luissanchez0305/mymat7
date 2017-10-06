@@ -8,10 +8,25 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+    $scope.$on('$routeChangeStart', function (scope, next, current) {
+        if (next.$$route.controller != "RoutinesViewController") {
+            // Show here for your model, and do what you need**
+            gapAlert("hola",next.$$route.controller);
+        }
+    });
     
     $scope.firstNameText = translations[$translate.preferredLanguage()]['first-name-text'];
     $scope.lastNameText = translations[$translate.preferredLanguage()]['last-name-text'];
     $scope.passwordText = translations[$translate.preferredLanguage()]['password'];    
+    $scope.datebirthText = translations[$translate.preferredLanguage()]['date-birth'];
+    var today = new Date(); 
+    var dd = today.getDate(); 
+    var mm = today.getMonth()+1; //January is 0! 
+    var yyyy = today.getFullYear(); 
+    if(dd<10){ dd='0'+dd; } 
+    if(mm<10){ mm='0'+mm; } 
+    var today = yyyy.toString()+'-'+mm.toString()+'-'+dd.toString(); 
+    $scope.maxDatebirth = today;
     $scope.changeLang = $translate.preferredLanguage() == "es" ? "ENGLISH" : "ESPAÑOL";
     $scope.changeLangCode = $translate.preferredLanguage() == "es" ? "en" : "es";
     $scope.coilText = translations[$translate.preferredLanguage()]['coil'];
@@ -1754,8 +1769,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $('.mymat-status-container').hide();
             var intervalCount = 0;
             testInterval = setInterval(function(){
-                // timeout of mymat detection 70 segundos
-                if(intervalCount < 7) {
+                // timeout of mymat detection 180 segundos
+                if(intervalCount < 60) {
                     var failMyMatTest = MyMat.test();
                     failMyMatTest.done(function(response){
                         if(verifyValues(response))
