@@ -8,13 +8,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-    $scope.$on('$routeChangeStart', function (scope, next, current) {
-        if (next.$$route.controller != "RoutinesViewController") {
-            // Show here for your model, and do what you need**
-            gapAlert("hola",next.$$route.controller);
-        }
-    });
-    
     $scope.firstNameText = translations[$translate.preferredLanguage()]['first-name-text'];
     $scope.lastNameText = translations[$translate.preferredLanguage()]['last-name-text'];
     $scope.passwordText = translations[$translate.preferredLanguage()]['password'];    
@@ -1692,7 +1685,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         }, fail);
     };
     
-    var testInterval;
     // check if mymat is connected
     var myMatTest = MyMat.test();
     myMatTest.done(function(response) {
@@ -1707,24 +1699,14 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     });
     
     showNoStatus = function(){
-        $('.activate-wifi-container').hide();
-        $('.mymat-status-container').show();
-        $('.status-table').hide();
         $('.no-status-container').show();
-        clearInterval(testInterval);
     }
     
     showStatus = function(){
         $('.activate-wifi-container').hide();
         $('.mymat-status-container').show();
         $('.status-table').show();
-        $('.no-status-container').hide();
         clearInterval(testInterval);
-    }
-    
-    showActivateWifi = function(){
-        $('.activate-wifi-container').show();
-        $('.mymat-status-container').hide();
     }
     
     verifyValues = function(response){
@@ -1768,6 +1750,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $('.activate-wifi-container').show();
             $('.mymat-status-container').hide();
             var intervalCount = 0;
+            
+            $scope.$on('$ionicView.leave', function(e) {
+                clearInterval(testInterval);
+            });
+            
             testInterval = setInterval(function(){
                 // timeout of mymat detection 180 segundos
                 if(intervalCount < 60) {

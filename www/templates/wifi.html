@@ -6,10 +6,18 @@
             <img src="img/wifi.png">
             <div class="titleinstructions" translate="please-pair">PLEASE PAIR YOUR <br> MYMAT</div>
             <br>  
-            <p translate="activate-wifi-1">Press your phone’s settings button, and navigate to your Wi-Fi settings.</p>
-            <p translate="activate-wifi-2">Select the MyMat Network and verify the connection is established.</p>
-            <img src="img/loading.gif" width="200" />
+            <p translate="activate-wifi">Steps to pair your MyMat</p>
+            <p translate="activate-wifi-1">1. Turn on your MyMat</p>
+            <p translate="activate-wifi-2">2. On your device, navigate to your Wi-Fi settings</p>
+            <p translate="activate-wifi-3">3. Connect your device's WiFi with your MyMat network</p>
+            <p translate="activate-wifi-4">4. Once is connected, return to the MyMat app</p>
             <!--<p class="interval-counter">0</p>-->
+            <br/>
+            <div class="no-status-container" style="display:none;">
+                <p translate="no-detect-1">We were unable to detect your MyMat</p>
+                <p translate="no-detect-2">Please follow the steps to do so</p>
+            </div>
+            <img src="img/loading.gif" width="200" />
         </div>
         <div class="mymat-status-container" style="display:none;">
             <div class="status-table divTable">
@@ -42,13 +50,6 @@
                         <div class="divTableCell coilOdd divTableCellLastRight" id="coil4">N/A</div>
                     </div>
                 </div>
-            </div>
-            <div class="no-status-container" style="display:none;">
-                <img src="img/wifi.png">
-                <div class="titleinstructions" translate="start-your-routine">START YOUR ROUTINE</div>
-                <br>  
-                <p translate="no-detect-1">We were unable to detect your MyMat</p>
-                <p translate="no-detect-2">If you already connected your MyMat you can start your routine by pressing the bellow button</p>
             </div>
             <p>&nbsp;</p>
             <a class="greenbtn start-routine" menu-close nav-transition="ios" nav-direction="forward" href="#/app/nowplaying" translate="start-routine">LAUNCH MYMAT</a>
