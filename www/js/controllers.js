@@ -1757,18 +1757,17 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             
             testInterval = setInterval(function(){
                 // timeout of mymat detection 180 segundos
-                if(intervalCount < 60) {
                     var failMyMatTest = MyMat.test();
                     failMyMatTest.done(function(response){
                         if(verifyValues(response))
                             showStatus(response);
+                        else if(intervalCount >= 60)
+                            showNoStatus();
                     }).fail(function(response){
+                        if(intervalCount >= 60)
+                            showNoStatus();
     			        console.log(response);
                     });
-                }
-                else {
-                    showNoStatus();
-                }
                 intervalCount += 1;
                 $('.interval-counter').html(intervalCount * 10);
             }, 3000);
