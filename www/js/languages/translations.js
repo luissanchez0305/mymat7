@@ -182,6 +182,7 @@ var translations = {
         "activate-wifi-2" : "2. En su dispositivo, entre a la configuraciòn del WiFi",
         "activate-wifi-3" : "3. Conecte el WiFi de su teléfono a la red MyMat",
         "activate-wifi-4" : "4. Una vez conectado regrese al app de MyMat",
+        "start-routine" : "EMPEZAR ROUTINE",
         "battery-power" : "Bater&iacute;a",
         "coil": "Antena",
         "start-your-routine" : "INICIA TU RUTINA",
