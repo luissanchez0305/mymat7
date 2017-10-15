@@ -36,6 +36,7 @@
                     <input type="date" style="width:210px;" ng-model="userData.dateOfBirth"  class="input birth" onchange="$(this).removeClass('error')" max="{{ maxDatebirth }}" placeholder="{{ datebirthText }}">
                     <br>
                     <input type="password" ng-model="userData.pass" placeholder="{{ passwordText }}"  class="input pass" onkeypress="$(this).removeClass('error')">
+                    <div translate="six-chars-min">Minimum 6 characters</div> 
                     <!--<br>
                     <input type="password" ng-model="userData.pass_confirm"  class="input pass">-->
                     <br><br>
