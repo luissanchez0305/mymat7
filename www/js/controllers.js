@@ -2005,8 +2005,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         }
 
         //attachNamesToBubbles();
-
-
     }
 
     $scope.moreProgramInfo = function (programId, programName, programRunningTime, programDescription) {
