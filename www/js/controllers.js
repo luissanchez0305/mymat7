@@ -1673,18 +1673,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('WifiScanViewController', function ($scope, MyMat) {
 
-    //scanForWifi();
-    $scope.scanForWifi = function () {
-        /*WifiWizard.startScan(
-            function (res) {},
-            function (error) {}
-        );*/
-	alert(WifiWizard);
-        WifiWizard.getCurrentSSID(function(handler){
-            alert(handler.SSID);
-        }, fail);
-    };
-    
     // check if mymat is connected
     var myMatTest = MyMat.test();
     myMatTest.done(function(response) {
@@ -1835,6 +1823,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     //$scope.programs = result;
     //  updateBubblesState();
     //});
+    
+            
+    $scope.$on('$ionicView.leave', function(e,i) {
+        if(i.direction != 'forward')
+            ionic.Platform.exitApp();
+    });
 
     $scope.presetSelected = 'basic';
     
