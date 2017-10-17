@@ -1777,7 +1777,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 
 
-.controller('ContactUsViewController', function ($scope, User, ContactForm) {
+.controller('ContactUsViewController', function ($scope, $translate, User, ContactForm) {
 
     /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
