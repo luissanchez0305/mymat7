@@ -1534,8 +1534,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 .controller('HelpViewController', function ($scope, $location, $state, User) {
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
-            $location.path('app/routines');
             alert('register leave');
+            $location.path('app/routines');
         }
     });
 })
@@ -1543,9 +1543,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 .controller('RegisterViewController', function ($scope, $location, $state, User) {
 
     $scope.$on('$ionicView.leave', function(e,i) {
-        if(i.direction != 'forward' && i.direction != 'none'){
-            $location.path('app/routines');
+        if(i.direction != 'forward' && i.direction != 'none'){;
             alert('register leave');
+            $location.path('app/routines')
         }
     });
     $scope.userData = {};
@@ -1783,8 +1783,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
-            $location.path('app/routines');
             alert('register leave');
+            $location.path('app/routines');
         }
     });
     $scope.emailData = {};
@@ -1847,6 +1847,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none')
+            alert('routine leave');
             ionic.Platform.exitApp();
     });
 
