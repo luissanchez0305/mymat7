@@ -1826,7 +1826,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     
             
     $scope.$on('$ionicView.leave', function(e,i) {
-        if(i.direction != 'forward')
+        if(i.direction != 'forward' && i.direction != 'none')
             ionic.Platform.exitApp();
     });
 
