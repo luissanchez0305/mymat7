@@ -1534,7 +1534,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 .controller('HelpViewController', function ($scope, $location, $state, User) {
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
-            gapAlert('register leave');
             $location.path('app/routines');
         }
     });
@@ -1544,7 +1543,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){;
-            gapAlert('register leave');
             $location.path('app/routines')
         }
     });
@@ -1783,7 +1781,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
-            gapAlert('contact us leave');
             $location.path('app/routines');
         }
     });
@@ -1847,7 +1844,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             
     $scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none')
-            gapAlert('routine leave');
             ionic.Platform.exitApp();
     });
 
