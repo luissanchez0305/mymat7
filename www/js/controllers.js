@@ -1533,16 +1533,20 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('HelpViewController', function ($scope, $location, $state, User) {
     $scope.$on('$ionicView.leave', function(e,i) {
-        if(i.direction != 'forward' && i.direction != 'none')
+        if(i.direction != 'forward' && i.direction != 'none'){
             $location.path('app/routines');
+            alert('register leave');
+        }
     });
 })
 
 .controller('RegisterViewController', function ($scope, $location, $state, User) {
 
     $scope.$on('$ionicView.leave', function(e,i) {
-        if(i.direction != 'forward' && i.direction != 'none')
+        if(i.direction != 'forward' && i.direction != 'none'){
             $location.path('app/routines');
+            alert('register leave');
+        }
     });
     $scope.userData = {};
     if(localStorage.UserLoggedIn == 'true') {
@@ -1778,8 +1782,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 .controller('ContactUsViewController', function ($scope, User, ContactForm) {
 
     $scope.$on('$ionicView.leave', function(e,i) {
-        if(i.direction != 'forward' && i.direction != 'none')
+        if(i.direction != 'forward' && i.direction != 'none'){
             $location.path('app/routines');
+            alert('register leave');
+        }
     });
     $scope.emailData = {};
 
