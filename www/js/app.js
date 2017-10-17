@@ -222,7 +222,8 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
     url: '/help',
     views: {
       'menuContent': {
-        templateUrl: 'templates/help.html'
+        templateUrl: 'templates/help.html',
+        controller: 'HelpViewController'
       }
     }
   })

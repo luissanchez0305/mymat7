@@ -58,7 +58,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     if(localStorage.UserLoggedIn == 'true'){
         $location.path('app/home');
         loginObjects();
-        setTimeout(function(){$location.path('app/routines')},2000);
+        setTimeout(function(){ $location.path('app/routines') }, 2000);
     }
     else{
         logoutObjects();
@@ -1521,24 +1521,34 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     })
 
 })
+
 .controller('HomeViewController', function ($scope, User) {
     
     $scope.skipRegistration = function () {
         $location.path('app/routines');
         //$state.go('app.routines');
     }
-
-
+    
 })
 
+.controller('HelpViewController', function ($scope, $location, $state, User) {
+    $scope.$on('$ionicView.leave', function(e,i) {
+        if(i.direction != 'forward' && i.direction != 'none')
+            $location.path('app/routines');
+    });
+})
 
 .controller('RegisterViewController', function ($scope, $location, $state, User) {
 
+    $scope.$on('$ionicView.leave', function(e,i) {
+        if(i.direction != 'forward' && i.direction != 'none')
+            $location.path('app/routines');
+    });
     $scope.userData = {};
-    if(localStorage.UserLoggedIn == 'true'){
+    if(localStorage.UserLoggedIn == 'true') {
         $('#register-title').hide();
         $('#profile-title').show();
-        User.getUserData(localStorage.userEmail).done(function (result){
+        User.getUserData(localStorage.userEmail).done(function (result) {
             $('.email').val(result.email);
             $('.email').attr('disabled','disabled');
             $('.firstname').val(result.first_name);
@@ -1547,7 +1557,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $('.gender option[value="'+result.gender+'"]').prop('selected',true);
         });
     }
-    else{
+    else {
         $('#register-title').show();
         $('#profile-title').hide();
     }
@@ -1767,6 +1777,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('ContactUsViewController', function ($scope, User, ContactForm) {
 
+    $scope.$on('$ionicView.leave', function(e,i) {
+        if(i.direction != 'forward' && i.direction != 'none')
+            $location.path('app/routines');
+    });
     $scope.emailData = {};
 
     $scope.attemptSendMail = function () {
