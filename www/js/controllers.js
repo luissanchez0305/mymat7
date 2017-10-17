@@ -1532,20 +1532,20 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 })
 
 .controller('HelpViewController', function ($scope, $location, $state, User) {
-    $scope.$on('$ionicView.leave', function(e,i) {
+    /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
             $location.path('app/routines');
         }
-    });
+    });*/
 })
 
 .controller('RegisterViewController', function ($scope, $location, $state, User) {
 
-    $scope.$on('$ionicView.leave', function(e,i) {
+    /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){;
             $location.path('app/routines')
         }
-    });
+    });*/
     $scope.userData = {};
     if(localStorage.UserLoggedIn == 'true') {
         $('#register-title').hide();
@@ -1779,11 +1779,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('ContactUsViewController', function ($scope, User, ContactForm) {
 
-    $scope.$on('$ionicView.leave', function(e,i) {
+    /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){
             $location.path('app/routines');
         }
-    });
+    });*/
     $scope.emailData = {};
 
     $scope.attemptSendMail = function () {
@@ -1842,10 +1842,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     //});
     
             
-    $scope.$on('$ionicView.leave', function(e,i) {
+    /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none')
             ionic.Platform.exitApp();
-    });
+    });*/
 
     $scope.presetSelected = 'basic';
     
