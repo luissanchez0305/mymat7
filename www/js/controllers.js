@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['pascalprecht.translate'])
 
-.controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, $location, myAppConfig, Languages, User) {
+.controller('AppCtrl', function ($scope, $translate, $ionicModal, $ionicSideMenuDelegate, $ionicHistory, $timeout, $window, $location, myAppConfig, Languages, User, Program) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -36,6 +36,21 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         logoutObjects();
     }
     
+    if(localStorage.getItem("pending").length > 0){
+        var pending_values = localStorage.getItem("pending").split('!');
+        if(pending_values[0] == "save-routines"){
+            var programsParams = {
+                    userEmail: pending_values[1],
+                    routineName: pending_values[2],
+                    program1: pending_values[3],
+                    program2: pending_values[4],
+                    program3: pending_values[5],
+                    program4: pending_values[6],
+                };
+                Program.saveCurrentRoutine(programsParams);
+                localStorage.setItem("pending", "");
+        }
+    }
     
     $scope.translations = Languages;
     localStorage.fbStatus = "";
@@ -1539,7 +1554,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     });*/
 })
 
-.controller('RegisterViewController', function ($scope, $location, $state, User) {
+.controller('RegisterViewController', function ($scope, $location, $state, User, MyMat) {
 
     /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){;
@@ -1577,44 +1592,51 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 pass: $('.pass').val()
             }
         }
-        User.attemptUserRegistration(userData).then(function (result) {
-            if (result.data.status == "ok") {
-                $location.path('app/routines');
-                loginObjects();
-                localStorage.UserLoggedIn = true;
-            } else {
-                gapAlert("Some fields are not valid", "Registration Unsuccessful");
-                if(result.data.emailError != 'ok')
-                    $('.email').addClass('error')
-                else
-                    $('.email').removeClass('error')
-                    
-                if(result.data.first_nameError != 'ok')
-                    $('.firstname').addClass('error');
-                else 
-                    $('.firstname').removeClass('error');
-                    
-                if(result.data.last_nameError != 'ok')
-                    $('.lastname').addClass('error');
-                else
-                    $('.lastname').removeClass('error');
-                    
-                if(result.data.genderError != 'ok')
-                    $('.gender, .gender select').addClass('error');
-                else
-                    $('.gender, .gender select').removeClass('error');
-                    
-                if(result.data.dateOfBirthError != 'ok')
-                    $('.birth').addClass('error');
-                else
-                    $('.birth').removeClass('error');
-                    
-                if(result.data.passwordError != 'ok')
-                    $('.pass').addClass('error');
-                else
-                    $('.pass').removeClass('error');
-                
-            }
+        MyMat.isOnline().then(function(){
+            User.attemptUserRegistration(userData).then(function (result) {
+                if (result.data.status == "ok") {
+                    $location.path('app/routines');
+                    loginObjects();
+                    localStorage.UserLoggedIn = true;
+                } else {
+                    gapAlert("Some fields are not valid", "Registration Unsuccessful");
+                    if(result.data.emailError != 'ok')
+                        $('.email').addClass('error')
+                    else
+                        $('.email').removeClass('error')
+                        
+                    if(result.data.first_nameError != 'ok')
+                        $('.firstname').addClass('error');
+                    else 
+                        $('.firstname').removeClass('error');
+                        
+                    if(result.data.last_nameError != 'ok')
+                        $('.lastname').addClass('error');
+                    else
+                        $('.lastname').removeClass('error');
+                        
+                    if(result.data.genderError != 'ok')
+                        $('.gender, .gender select').addClass('error');
+                    else
+                        $('.gender, .gender select').removeClass('error');
+                        
+                    if(result.data.dateOfBirthError != 'ok')
+                        $('.birth').addClass('error');
+                    else
+                        $('.birth').removeClass('error');
+                        
+                    if(result.data.passwordError != 'ok')
+                        $('.pass').addClass('error');
+                    else
+                        $('.pass').removeClass('error');
+                }
+            })
+            .error(function(){
+                gapAlert(translations[$translate.preferredLanguage()]['register-error-message'], translations[$translate.preferredLanguage()]['register-error-title']);
+            });            
+        })
+        .error(function(){
+            gapAlert(translations[$translate.preferredLanguage()]['offline-message'], translations[$translate.preferredLanguage()]['offline-title']);
         });
     };
 
@@ -2071,7 +2093,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
 
 
-.controller('NowPlayingViewController', function ($scope, $ionicSideMenuDelegate, $timeout, $location, Program, MyMat) {
+.controller('NowPlayingViewController', function ($scope, $ionicSideMenuDelegate, $timeout, $location, Program, MyMat, ContactForm) {
 
     $ionicSideMenuDelegate.canDragContent(true);
 
@@ -2149,8 +2171,17 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                     if (result.data.status == "ok") {
                         console.log("Routine was saved !");
                     } else {
-                        gapAlert(result.data.error);
+                        //gapAlert(result.data.error);
+                        ContactForm.sendErrorEmail({ title : 'Guardando Rutina', message : "Correo del usuario - " + localStorage.userEmail });
                     }
+                }).error(function(){
+                    localStorage.setItem("pending", "save-routines!"+
+                        localStorage.userEmail + "!" +
+                        localStorage.routineName + "!" +
+                        localStorage.bubbleRoutineProgram1 + "!" +
+                        localStorage.bubbleRoutineProgram2 + "!" +
+                        localStorage.bubbleRoutineProgram3 + "!" +
+                        localStorage.bubbleRoutineProgram4);
                 });
                 runThisRoutine(programs);
             }

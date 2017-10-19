@@ -70,6 +70,10 @@ angular.module('starter.services', [])
           var url = myAppConfig.mainApiUrl+"contact_us.php";
           var data = emailData;
           return $http.post(url, data)
+      },
+      sendErrorEmail: function(emailData){
+          var url = myAppConfig.mainApiUrl+"send_error_mail.php";
+          return $http.post(url, emailData);
       }
   }
 
@@ -98,6 +102,10 @@ angular.module('starter.services', [])
           var response = $.ajax({ url: myAppConfig.myMatApiAddress, timeout: 5000 });
           //var response = $http.get(myAppConfig.myMatApiAddress);
           return response;
+      },
+      isOnline: function(){
+          var url = myAppConfig.mainApiUrl;
+          return $http.post(url);
       }
   }
 

@@ -63,7 +63,6 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
     }
     if(typeof navigator.globalization !== 'undefined'){
         navigator.globalization.getPreferredLanguage(function(language){
-            alert(language.value);
             $translate.use((language.value).split('-')[0]).then(function(data){
                 console.log("SUCCESS: " + data);
             }, function(data){
@@ -92,7 +91,7 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
 .config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider, $translateProvider, contentfulClientProvider, myAppConfig) {
 
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-  $httpProvider.defaults.timeout = 100000;
+  $httpProvider.defaults.timeout = 60000;
   contentfulClientProvider.setSpaceId(myAppConfig.contentfulSpaceId); 
   contentfulClientProvider.setAccessToken(myAppConfig.contentfulAccessToken);
   $ionicConfigProvider.views.maxCache(0);
