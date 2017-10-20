@@ -32,11 +32,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.logoutUser = function(){
         User.attempUserLogout();
         $location.path('app/login');
-        localStorage.UserLoggedIn = false;
+        localStorage.isUserLogged = false;
         logoutObjects();
     }
     
-    if(localStorage.getItem("pending").length > 0){
+    if(localStorage.getItem("pending") && localStorage.getItem("pending").length > 0){
         var pending_values = localStorage.getItem("pending").split('!');
         if(pending_values[0] == "save-routines"){
             var programsParams = {
@@ -70,7 +70,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
     
     // Revisar si el usuario esta logueado
-    if(localStorage.UserLoggedIn == 'true'){
+    if(localStorage.isUserLogged == 'true'){
         $location.path('app/home');
         loginObjects();
         setTimeout(function(){ $location.path('app/routines') }, 2000);
@@ -1554,7 +1554,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     });*/
 })
 
-.controller('RegisterViewController', function ($scope, $location, $state, User, MyMat) {
+.controller('RegisterViewController', function ($scope, $translate, $location, $state, User, MyMat) {
 
     /*$scope.$on('$ionicView.leave', function(e,i) {
         if(i.direction != 'forward' && i.direction != 'none'){;
@@ -1562,10 +1562,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         }
     });*/
     $scope.userData = {};
-    if(localStorage.UserLoggedIn == 'true') {
+    if(localStorage.isUserLogged == 'true') {
         $('#register-title').hide();
         $('#profile-title').show();
-        User.getUserData(localStorage.userEmail).done(function (result) {
+        User.getUserData(localStorage.UserLoggedIn).done(function (result) {
             $('.email').val(result.email);
             $('.email').attr('disabled','disabled');
             $('.firstname').val(result.first_name);
@@ -1581,7 +1581,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.attemptRegistration = function () {
         userData = $scope.userData;
         
-        if(localStorage.UserLoggedIn == 'true'){
+        if(localStorage.isUserLogged == 'true'){
             userData = { 
                 email: $('.email').val(), 
                 first_name: $('.firstname').val(),
@@ -1597,45 +1597,65 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 if (result.data.status == "ok") {
                     $location.path('app/routines');
                     loginObjects();
-                    localStorage.UserLoggedIn = true;
+                    localStorage.isUserLogged = true;
+                    localStorage.UserLoggedIn = userData.email;
                 } else {
-                    gapAlert("Some fields are not valid", "Registration Unsuccessful");
-                    if(result.data.emailError != 'ok')
+                    var errorMsg = '';
+                    if(result.data.emailError != 'ok'){
                         $('.email').addClass('error')
+                        errorMsg = result.data.emailError;
+                    }
                     else
                         $('.email').removeClass('error')
                         
-                    if(result.data.first_nameError != 'ok')
+                    if(result.data.first_nameError != 'ok'){
                         $('.firstname').addClass('error');
+                        errorMsg += "\n" + result.data.first_nameError;
+                    }
                     else 
                         $('.firstname').removeClass('error');
                         
-                    if(result.data.last_nameError != 'ok')
+                    if(result.data.last_nameError != 'ok'){
                         $('.lastname').addClass('error');
+                        errorMsg += "\n" + result.data.last_nameError;
+                    }
                     else
                         $('.lastname').removeClass('error');
                         
-                    if(result.data.genderError != 'ok')
+                    if(result.data.genderError != 'ok'){
                         $('.gender, .gender select').addClass('error');
+                        errorMsg += "\n" + result.data.genderError;
+                    }
                     else
                         $('.gender, .gender select').removeClass('error');
                         
-                    if(result.data.dateOfBirthError != 'ok')
+                    if(result.data.dateOfBirthError != 'ok'){
                         $('.birth').addClass('error');
+                        errorMsg += "\n" + result.data.dateOfBirthError;
+                    }
                     else
                         $('.birth').removeClass('error');
                         
-                    if(result.data.passwordError != 'ok')
+                    if(result.data.passwordError != 'ok'){
                         $('.pass').addClass('error');
+                        errorMsg += "\n" + result.data.passwordError;
+                    }
                     else
                         $('.pass').removeClass('error');
+                    gapAlert("Some fields are not valid.\n" + errorMsg, "Registration Unsuccessful");
                 }
-            })
-            .error(function(){
+            }, function(){
                 gapAlert(translations[$translate.preferredLanguage()]['register-error-message'], translations[$translate.preferredLanguage()]['register-error-title']);
-            });            
-        })
-        .error(function(){
+                ContactForm.sendErrorEmail({ title : 'Error al registrar', 
+                    message : "Datos del usuario - email: " + $('.email').val() + 
+                        " first name: " +  $('.firstname').val() + 
+                        " last name: " + $('.lastname').val() + 
+                        " gender: " + $('.gender').find(":selected").val() + 
+                        " birth: " + $('.birth').val() + 
+                        " password: " + $('.pass').val()
+                });
+            });           
+        }, function(){
             gapAlert(translations[$translate.preferredLanguage()]['offline-message'], translations[$translate.preferredLanguage()]['offline-title']);
         });
     };
@@ -1679,7 +1699,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     User.isUserLoggedIn().then(function (res) {
         if (res.data.status == "logged") {
             localStorage.isUserLogged = true;
-            localStorage.userEmail = result.data.loggedUserEmail;
+            localStorage.UserLoggedIn = result.data.loggedUserEmail;
         } else {
             localStorage.isUserLogged = false;
         }
@@ -1692,8 +1712,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         User.attemptUserLogin($scope.loginData).then(function (result) {
             if (result.data.status == "ok") {
                 loginObjects();
-                localStorage.userEmail = result.data.loggedUserEmail;
-                localStorage.UserLoggedIn = true;
+                localStorage.UserLoggedIn = result.data.loggedUserEmail;
+                localStorage.isUserLogged = true;
                 
                 $location.path('app/routines');
             } else {
@@ -2160,7 +2180,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     function initRoutine(programs) {
             if(localStorage.isUserLogged){
                 var programsParams = {
-                    userEmail: localStorage.userEmail,
+                    userEmail: localStorage.UserLoggedIn,
                     routineName: localStorage.routineName,
                     program1: localStorage.bubbleRoutineProgram1,
                     program2: localStorage.bubbleRoutineProgram2,
@@ -2172,11 +2192,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                         console.log("Routine was saved !");
                     } else {
                         //gapAlert(result.data.error);
-                        ContactForm.sendErrorEmail({ title : 'Guardando Rutina', message : "Correo del usuario - " + localStorage.userEmail });
+                        ContactForm.sendErrorEmail({ title : 'Guardando Rutina', message : "Correo del usuario - " + localStorage.UserLoggedIn });
                     }
-                }).error(function(){
+                }, function(){
                     localStorage.setItem("pending", "save-routines!"+
-                        localStorage.userEmail + "!" +
+                        localStorage.UserLoggedIn + "!" +
                         localStorage.routineName + "!" +
                         localStorage.bubbleRoutineProgram1 + "!" +
                         localStorage.bubbleRoutineProgram2 + "!" +

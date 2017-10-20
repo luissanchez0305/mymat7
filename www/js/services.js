@@ -104,7 +104,7 @@ angular.module('starter.services', [])
           return response;
       },
       isOnline: function(){
-          var url = myAppConfig.mainApiUrl;
+          var url = myAppConfig.mainApiUrl+'check_online.php';
           return $http.post(url);
       }
   }
