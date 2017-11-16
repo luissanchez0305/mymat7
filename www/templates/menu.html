@@ -23,11 +23,12 @@
             <ion-list>
 
                 <div class="menutitle"><img src="img/logomenu.png"></div>
-
-
-
-                <ion-item class="menuitemhome" menu-close ng-click="switchLang('{{ changeLangCode }}')">
-                    {{ changeLang }}
+                <ion-item class="menuitemhome" menu-close>
+                    <img src="img/flag-england.png" class="{{ hideLangEn }}" width="35" height="35" ng-click="switchLang('en')">
+                    <img src="img/flag-spain.png" class="{{ hideLangEs }}" width="35" height="35" ng-click="switchLang('es')">
+                    <img src="img/flag-italy.png" class="{{ hideLangIt }}" width="35" height="35" ng-click="switchLang('it')">
+                    <img src="img/flag-germany.png" class="{{ hideLangGr }}" width="35" height="35" ng-click="switchLang('gr')">
+                    <img src="img/flag-france.png" class="{{ hideLangFr }}" width="35" height="35" ng-click="switchLang('fr')">
                 </ion-item>
                 
                 <ion-item class="menuitemhome routinesMenuBtn" menu-close href="#/app/routines">

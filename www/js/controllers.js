@@ -20,8 +20,43 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     if(mm<10){ mm='0'+mm; } 
     var today = yyyy.toString()+'-'+mm.toString()+'-'+dd.toString(); 
     $scope.maxDatebirth = today;
-    $scope.changeLang = $translate.preferredLanguage() == "es" ? "ENGLISH" : "ESPAÑOL";
-    $scope.changeLangCode = $translate.preferredLanguage() == "es" ? "en" : "es";
+    switch($translate.preferredLanguage()){
+        case "es":
+            $scope.hideLangEn = "";
+            $scope.hideLangGr = "";
+            $scope.hideLangIt = "";
+            $scope.hideLangFr = "";
+            $scope.hideLangEs = "hide";
+            break;
+        case "en":
+            $scope.hideLangEn = "hide";
+            $scope.hideLangGr = "";
+            $scope.hideLangIt = "";
+            $scope.hideLangFr = "";
+            $scope.hideLangEs = "";
+            break;
+        case "it":
+            $scope.hideLangEn = "";
+            $scope.hideLangGr = "";
+            $scope.hideLangIt = "hide";
+            $scope.hideLangFr = "";
+            $scope.hideLangEs = "";
+            break;
+        case "gr":
+            $scope.hideLangEn = "";
+            $scope.hideLangGr = "hide";
+            $scope.hideLangIt = "";
+            $scope.hideLangFr = "";
+            $scope.hideLangEs = "";
+            break;
+        case "fr":
+            $scope.hideLangEn = "";
+            $scope.hideLangGr = "";
+            $scope.hideLangIt = "";
+            $scope.hideLangFr = "hide";
+            $scope.hideLangEs = "";
+            break;
+    }
     $scope.coilText = translations[$translate.preferredLanguage()]['coil'];
     
     $scope.switchLang = function(code){
