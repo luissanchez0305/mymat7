@@ -310,18 +310,18 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
    for(lang in translations){
 		$translateProvider.translations(lang, translations[lang]);
 	}
-  if(localStorage.currentLang){
-	  $translateProvider.preferredLanguage(localStorage.currentLang);
+  if(localStorage.MyMat_currentLang){
+	  $translateProvider.preferredLanguage(localStorage.MyMat_currentLang);
   }
   else {
 	  $translateProvider.preferredLanguage('en');
-	  localStorage.currentLang = "en";
+	  localStorage.MyMat_currentLang = "en";
   }
 	$translateProvider.fallbackLanguage('en');
     
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
-	localStorage.DisplayLoginView = true;
+	localStorage.MyMat_DisplayLoginView = true;
 })
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated',

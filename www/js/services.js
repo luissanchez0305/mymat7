@@ -103,7 +103,7 @@ angular.module('starter.services', [])
           //var response = $http.get(myAppConfig.myMatApiAddress);
           return response;
       },
-      isOnline: function(){
+      isDeviceOnlineTest: function(){
           var url = myAppConfig.mainApiUrl+'check_online.php';
           return $http.post(url);
       }

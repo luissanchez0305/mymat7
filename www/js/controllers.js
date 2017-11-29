@@ -60,19 +60,19 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.coilText = translations[$translate.preferredLanguage()]['coil'];
     
     $scope.switchLang = function(code){
-        localStorage.currentLang = code;
+        localStorage.MyMat_currentLang = code;
         $translate.preferredLanguage(code);
         $window.location.reload(true);
     }
     $scope.logoutUser = function(){
         User.attempUserLogout();
         $location.path('app/login');
-        localStorage.isUserLogged = false;
+        localStorage.MyMat_isUserLogged = false;
         logoutObjects();
     }
     
-    if(localStorage.getItem("pending") && localStorage.getItem("pending").length > 0){
-        var pending_values = localStorage.getItem("pending").split('!');
+    if(localStorage.getItem("MyMat_pending") && localStorage.getItem("MyMat_pending").length > 0){
+        var pending_values = localStorage.getItem("MyMat_pending").split('!');
         if(pending_values[0] == "save-routines"){
             var programsParams = {
                     userEmail: pending_values[1],
@@ -83,12 +83,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                     program4: pending_values[6],
                 };
                 Program.saveCurrentRoutine(programsParams);
-                localStorage.setItem("pending", "");
+                localStorage.setItem("MyMat_pending", "");
         }
     }
     
     $scope.translations = Languages;
-    localStorage.fbStatus = "";
+    localStorage.MyMat_fbStatus = "";
     
     loginObjects = function(){
         $('.menuitemhome.routinesMenuBtn').show();
@@ -105,7 +105,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
     
     // Revisar si el usuario esta logueado
-    if(localStorage.isUserLogged == 'true'){
+    if(localStorage.MyMat_isUserLogged == 'true'){
         $location.path('app/home');
         loginObjects();
         setTimeout(function(){ $location.path('app/routines') }, 2000);
@@ -113,9 +113,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     else{
         logoutObjects();
         
-        if(localStorage.DisplayLoginView == 'true'){
+        if(localStorage.MyMat_DisplayLoginView == 'true'){
             $location.path('app/login');
-            localStorage.DisplayLoginView = false;
+            localStorage.MyMat_DisplayLoginView = false;
         }
     }
     
@@ -1547,10 +1547,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
                     ];
 
-    localStorage.bubbleRoutineProgram1 = "";
-    localStorage.bubbleRoutineProgram2 = "";
-    localStorage.bubbleRoutineProgram3 = "";
-    localStorage.bubbleRoutineProgram4 = "";
+    localStorage.MyMat_bubbleRoutineProgram1 = "";
+    localStorage.MyMat_bubbleRoutineProgram2 = "";
+    localStorage.MyMat_bubbleRoutineProgram3 = "";
+    localStorage.MyMat_bubbleRoutineProgram4 = "";
 
     $scope.toggleSidemenu = function () {
         var currentView = $ionicHistory.currentView();
@@ -1597,10 +1597,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         }
     });*/
     $scope.userData = {};
-    if(localStorage.isUserLogged == 'true') {
+    if(localStorage.MyMat_isUserLogged == 'true') {
         $('#register-title').hide();
         $('#profile-title').show();
-        User.getUserData(localStorage.UserLoggedIn).done(function (result) {
+        User.getUserData(localStorage.MyMat_UserLoggedIn).done(function (result) {
             $('.email').val(result.email);
             $('.email').attr('disabled','disabled');
             $('.firstname').val(result.first_name);
@@ -1616,7 +1616,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.attemptRegistration = function () {
         userData = $scope.userData;
         
-        if(localStorage.isUserLogged == 'true'){
+        if(localStorage.MyMat_isUserLogged == 'true'){
             userData = { 
                 email: $('.email').val(), 
                 first_name: $('.firstname').val(),
@@ -1627,13 +1627,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 pass: $('.pass').val()
             }
         }
-        MyMat.isOnline().then(function(){
+        MyMat.isDeviceOnlineTest().then(function(){
             User.attemptUserRegistration(userData).then(function (result) {
                 if (result.data.status == "ok") {
                     $location.path('app/routines');
                     loginObjects();
-                    localStorage.isUserLogged = true;
-                    localStorage.UserLoggedIn = userData.email;
+                    localStorage.MyMat_isUserLogged = true;
+                    localStorage.MyMat_UserLoggedIn = userData.email;
                 } else {
                     var errorMsg = '';
                     if(result.data.emailError != 'ok'){
@@ -1733,10 +1733,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     User.isUserLoggedIn().then(function (res) {
         if (res.data.status == "logged") {
-            localStorage.isUserLogged = true;
-            localStorage.UserLoggedIn = result.data.loggedUserEmail;
+            localStorage.MyMat_isUserLogged = true;
+            localStorage.MyMat_UserLoggedIn = result.data.loggedUserEmail;
         } else {
-            localStorage.isUserLogged = false;
+            localStorage.MyMat_isUserLogged = false;
         }
     });
 
@@ -1747,8 +1747,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         User.attemptUserLogin($scope.loginData).then(function (result) {
             if (result.data.status == "ok") {
                 loginObjects();
-                localStorage.UserLoggedIn = result.data.loggedUserEmail;
-                localStorage.isUserLogged = true;
+                localStorage.MyMat_UserLoggedIn = result.data.loggedUserEmail;
+                localStorage.MyMat_isUserLogged = true;
                 
                 $location.path('app/routines');
             } else {
@@ -1890,13 +1890,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.predefinedPrograms = {};
     $scope.predefinedPrograms = $scope.offlineGroups;
     $scope.routine = {};
-    var p1Name = localStorage.bubbleRoutineProgram1.split("|");
+    var p1Name = localStorage.MyMat_bubbleRoutineProgram1.split("|");
     p1Name = p1Name[1];
-    var p2Name = localStorage.bubbleRoutineProgram2.split("|");
+    var p2Name = localStorage.MyMat_bubbleRoutineProgram2.split("|");
     p2Name = p2Name[1];
-    var p3Name = localStorage.bubbleRoutineProgram3.split("|");
+    var p3Name = localStorage.MyMat_bubbleRoutineProgram3.split("|");
     p3Name = p3Name[1];
-    var p4Name = localStorage.bubbleRoutineProgram4.split("|");
+    var p4Name = localStorage.MyMat_bubbleRoutineProgram4.split("|");
     p4Name = p4Name[1];
     $scope.bubblesNames = [p1Name, p2Name, p3Name, p4Name];
 
@@ -1955,16 +1955,16 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
         var currentBubbleSlot = currentlySelectedBubble;
         if (currentBubbleSlot == 1) {
-            localStorage.bubbleRoutineProgram1 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
+            localStorage.MyMat_bubbleRoutineProgram1 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
             $scope.bubblesNames[0] = programName;
         } else if (currentBubbleSlot == 2) {
-            localStorage.bubbleRoutineProgram2 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
+            localStorage.MyMat_bubbleRoutineProgram2 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
             $scope.bubblesNames[1] = programName;
         } else if (currentBubbleSlot == 3) {
-            localStorage.bubbleRoutineProgram3 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
+            localStorage.MyMat_bubbleRoutineProgram3 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
             $scope.bubblesNames[2] = programName;
         } else if (currentBubbleSlot == 4) {
-            localStorage.bubbleRoutineProgram4 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
+            localStorage.MyMat_bubbleRoutineProgram4 = idProgram + "|" + programName + "|" + programRunningTime + "|" + apiName;
             $scope.bubblesNames[3] = programName;
         }
         //updateBubblesState();
@@ -1982,16 +1982,16 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             translations[$translate.preferredLanguage()]['cancel'], function (buttonIndex) {
             if (buttonIndex == 1) {
                 if (idBubble == 1) {
-                    localStorage.bubbleRoutineProgram1 = "";
+                    localStorage.MyMat_bubbleRoutineProgram1 = "";
                     $scope.bubblesNames[0] = "";
                 } else if (idBubble == 2) {
-                    localStorage.bubbleRoutineProgram2 = "";
+                    localStorage.MyMat_bubbleRoutineProgram2 = "";
                     $scope.bubblesNames[1] = "";
                 } else if (idBubble == 3) {
-                    localStorage.bubbleRoutineProgram3 = "";
+                    localStorage.MyMat_bubbleRoutineProgram3 = "";
                     $scope.bubblesNames[2] = "";
                 } else if (idBubble == 4) {
-                    localStorage.bubbleRoutineProgram4 = "";
+                    localStorage.MyMat_bubbleRoutineProgram4 = "";
                     $scope.bubblesNames[3] = "";
                 }
                 $timeout(function () {
@@ -2011,14 +2011,14 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
     
     $scope.cleanRoutine = function(){
-        localStorage.routineName = "";    
-        localStorage.bubbleRoutineProgram1 = "";
+        localStorage.MyMat_routineName = "";    
+        localStorage.MyMat_bubbleRoutineProgram1 = "";
         $scope.bubblesNames[0] = "";
-        localStorage.bubbleRoutineProgram2 = "";
+        localStorage.MyMat_bubbleRoutineProgram2 = "";
         $scope.bubblesNames[1] = "";
-        localStorage.bubbleRoutineProgram3 = "";
+        localStorage.MyMat_bubbleRoutineProgram3 = "";
         $scope.bubblesNames[2] = "";
-        localStorage.bubbleRoutineProgram4 = "";
+        localStorage.MyMat_bubbleRoutineProgram4 = "";
         $scope.bubblesNames[3] = "";
         $timeout(function () {
             updateBubblesState();
@@ -2027,16 +2027,16 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     function areAllSlotsFull() {
         var counHelper = 0;
-        if (localStorage.bubbleRoutineProgram1.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram1.length > 0) {
             counHelper++;
         }
-        if (localStorage.bubbleRoutineProgram2.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram2.length > 0) {
             counHelper++;
         }
-        if (localStorage.bubbleRoutineProgram3.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram3.length > 0) {
             counHelper++;
         }
-        if (localStorage.bubbleRoutineProgram4.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram4.length > 0) {
             counHelper++;
         }
         if (counHelper >= 4) {
@@ -2048,19 +2048,19 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     function attachNamesToBubbles() {
 
 
-        var bubble1ProgramNameTemp = localStorage.bubbleRoutineProgram1.split("|");
+        var bubble1ProgramNameTemp = localStorage.MyMat_bubbleRoutineProgram1.split("|");
         $scope.bubblesNames[0] = bubble1ProgramNameTemp[1];
 
 
-        var bubble2ProgramNameTemp = localStorage.bubbleRoutineProgram2.split("|");
+        var bubble2ProgramNameTemp = localStorage.MyMat_bubbleRoutineProgram2.split("|");
         $scope.bubblesNames[1] = bubble2ProgramNameTemp[1];
 
 
-        var bubble3ProgramNameTemp = localStorage.bubbleRoutineProgram3.split("|");
+        var bubble3ProgramNameTemp = localStorage.MyMat_bubbleRoutineProgram3.split("|");
         $scope.bubblesNames[2] = bubble3ProgramNameTemp[1];
 
 
-        var bubble4ProgramNameTemp = localStorage.bubbleRoutineProgram4.split("|");
+        var bubble4ProgramNameTemp = localStorage.MyMat_bubbleRoutineProgram4.split("|");
         $scope.bubblesNames[3] = bubble4ProgramNameTemp[1];
 
 
@@ -2068,25 +2068,25 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     function updateBubblesState() {
 
-        if (localStorage.bubbleRoutineProgram1.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram1.length > 0) {
             $scope.bubblesCurrentState.bubble1 = true;
         } else {
             $scope.bubblesCurrentState.bubble1 = false;
         }
 
-        if (localStorage.bubbleRoutineProgram2.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram2.length > 0) {
             $scope.bubblesCurrentState.bubble2 = true;
         } else {
             $scope.bubblesCurrentState.bubble2 = false;
         }
 
-        if (localStorage.bubbleRoutineProgram3.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram3.length > 0) {
             $scope.bubblesCurrentState.bubble3 = true;
         } else {
             $scope.bubblesCurrentState.bubble3 = false;
         }
 
-        if (localStorage.bubbleRoutineProgram4.length > 0) {
+        if (localStorage.MyMat_bubbleRoutineProgram4.length > 0) {
             $scope.bubblesCurrentState.bubble4 = true;
         } else {
             $scope.bubblesCurrentState.bubble4 = false;
@@ -2110,7 +2110,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
     $scope.insertPreSetProgram = function (routineName, program1, program2, program3, program4) {
 
-        localStorage.routineName = routineName;
+        localStorage.MyMat_routineName = routineName;
         $scope.selectBubble(1);
         $scope.addProgramToRoutine("", program1.name, program1.runningtime, program1.apiName);
 
@@ -2128,13 +2128,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         }, 500);
 
         /*
-        localStorage.bubbleRoutineProgram1 = program1.name+"|"+program1.name+"|"+program1.runningtime+"|"+program1.apiName;
+        localStorage.MyMat_bubbleRoutineProgram1 = program1.name+"|"+program1.name+"|"+program1.runningtime+"|"+program1.apiName;
         $scope.bubblesNames[0] = program1.name;
-        localStorage.bubbleRoutineprogram2 = program2.name+"|"+program2.name+"|"+program2.runningtime+"|"+program2.apiName;
+        localStorage.MyMat_bubbleRoutineprogram2 = program2.name+"|"+program2.name+"|"+program2.runningtime+"|"+program2.apiName;
         $scope.bubblesNames[1] = program2.name;
-        localStorage.bubbleRoutineprogram3 = program3.name+"|"+program3.name+"|"+program3.runningtime+"|"+program3.apiName;
+        localStorage.MyMat_bubbleRoutineprogram3 = program3.name+"|"+program3.name+"|"+program3.runningtime+"|"+program3.apiName;
         $scope.bubblesNames[2] = program3.name;
-        localStorage.bubbleRoutineprogram4 = program4.name+"|"+program4.name+"|"+program4.runningtime+"|"+program4.apiName;
+        localStorage.MyMat_bubbleRoutineprogram4 = program4.name+"|"+program4.name+"|"+program4.runningtime+"|"+program4.apiName;
         $scope.bubblesNames[3] = program4.name;
         $scope.modal.hide();
         $timeout(function(){
@@ -2162,27 +2162,27 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.program3CurrentTime = 0;
     $scope.program4CurrentTime = 0;
 
-    $scope.program1 = localStorage.bubbleRoutineProgram1.split("|");
+    $scope.program1 = localStorage.MyMat_bubbleRoutineProgram1.split("|");
     $scope.program1[4] = $scope.program1[2];
     $scope.program1[2] = convertTimeToSecond($scope.program1[2]);
     $scope.program1[3] = $scope.program1[2] * 1000;
-    $scope.program2 = localStorage.bubbleRoutineProgram2.split("|");
+    $scope.program2 = localStorage.MyMat_bubbleRoutineProgram2.split("|");
     $scope.program2[4] = $scope.program2[2];
     $scope.program2[2] = convertTimeToSecond($scope.program2[2]);
     $scope.program2[3] = $scope.program2[2] * 1000;
-    $scope.program3 = localStorage.bubbleRoutineProgram3.split("|");
+    $scope.program3 = localStorage.MyMat_bubbleRoutineProgram3.split("|");
     $scope.program3[4] = $scope.program3[2];
     $scope.program3[2] = convertTimeToSecond($scope.program3[2]);
     $scope.program3[3] = $scope.program3[2] * 1000;
-    $scope.program4 = localStorage.bubbleRoutineProgram4.split("|");
+    $scope.program4 = localStorage.MyMat_bubbleRoutineProgram4.split("|");
     $scope.program4[4] = $scope.program4[2];
     $scope.program4[2] = convertTimeToSecond($scope.program4[2]);
     $scope.program4[3] = $scope.program4[2] * 1000;
     var programs = [
-        localStorage.bubbleRoutineProgram1,
-        localStorage.bubbleRoutineProgram2,
-        localStorage.bubbleRoutineProgram3,
-        localStorage.bubbleRoutineProgram4
+        localStorage.MyMat_bubbleRoutineProgram1,
+        localStorage.MyMat_bubbleRoutineProgram2,
+        localStorage.MyMat_bubbleRoutineProgram3,
+        localStorage.MyMat_bubbleRoutineProgram4
     ];
 
     $scope.program1CurrentTimeDecreasing = $scope.program1[2];
@@ -2213,30 +2213,30 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }, 500);*/
 
     function initRoutine(programs) {
-            if(localStorage.isUserLogged){
+            if(localStorage.MyMat_isUserLogged){
                 var programsParams = {
-                    userEmail: localStorage.UserLoggedIn,
-                    routineName: localStorage.routineName,
-                    program1: localStorage.bubbleRoutineProgram1,
-                    program2: localStorage.bubbleRoutineProgram2,
-                    program3: localStorage.bubbleRoutineProgram3,
-                    program4: localStorage.bubbleRoutineProgram4,
+                    userEmail: localStorage.MyMat_UserLoggedIn,
+                    routineName: localStorage.MyMat_routineName,
+                    program1: localStorage.MyMat_bubbleRoutineProgram1,
+                    program2: localStorage.MyMat_bubbleRoutineProgram2,
+                    program3: localStorage.MyMat_bubbleRoutineProgram3,
+                    program4: localStorage.MyMat_bubbleRoutineProgram4,
                 };
                 Program.saveCurrentRoutine(programsParams).then(function (result) {
                     if (result.data.status == "ok") {
                         console.log("Routine was saved !");
                     } else {
                         //gapAlert(result.data.error);
-                        ContactForm.sendErrorEmail({ title : 'Guardando Rutina', message : "Correo del usuario - " + localStorage.UserLoggedIn });
+                        ContactForm.sendErrorEmail({ title : 'Guardando Rutina', message : "Correo del usuario - " + localStorage.MyMat_UserLoggedIn });
                     }
                 }, function(){
-                    localStorage.setItem("pending", "save-routines!"+
-                        localStorage.UserLoggedIn + "!" +
-                        localStorage.routineName + "!" +
-                        localStorage.bubbleRoutineProgram1 + "!" +
-                        localStorage.bubbleRoutineProgram2 + "!" +
-                        localStorage.bubbleRoutineProgram3 + "!" +
-                        localStorage.bubbleRoutineProgram4);
+                    localStorage.setItem("MyMat_pending", "save-routines!"+
+                        localStorage.MyMat_UserLoggedIn + "!" +
+                        localStorage.MyMat_routineName + "!" +
+                        localStorage.MyMat_bubbleRoutineProgram1 + "!" +
+                        localStorage.MyMat_bubbleRoutineProgram2 + "!" +
+                        localStorage.MyMat_bubbleRoutineProgram3 + "!" +
+                        localStorage.MyMat_bubbleRoutineProgram4);
                 });
                 runThisRoutine(programs);
             }
@@ -2354,10 +2354,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
 
     $scope.startFavoriteRoutine = function (favs) {
-        localStorage.bubbleRoutineProgram1 = favs.programs[0].program_contentful_id + "|" + favs.programs[0].program_name + "|" + favs.programs[0].program_running_time;
-        localStorage.bubbleRoutineProgram2 = favs.programs[1].program_contentful_id + "|" + favs.programs[1].program_name + "|" + favs.programs[1].program_running_time;
-        localStorage.bubbleRoutineProgram3 = favs.programs[2].program_contentful_id + "|" + favs.programs[2].program_name + "|" + favs.programs[2].program_running_time;
-        localStorage.bubbleRoutineProgram4 = favs.programs[3].program_contentful_id + "|" + favs.programs[3].program_name + "|" + favs.programs[3].program_running_time;
+        localStorage.MyMat_bubbleRoutineProgram1 = favs.programs[0].program_contentful_id + "|" + favs.programs[0].program_name + "|" + favs.programs[0].program_running_time;
+        localStorage.MyMat_bubbleRoutineProgram2 = favs.programs[1].program_contentful_id + "|" + favs.programs[1].program_name + "|" + favs.programs[1].program_running_time;
+        localStorage.MyMat_bubbleRoutineProgram3 = favs.programs[2].program_contentful_id + "|" + favs.programs[2].program_name + "|" + favs.programs[2].program_running_time;
+        localStorage.MyMat_bubbleRoutineProgram4 = favs.programs[3].program_contentful_id + "|" + favs.programs[3].program_name + "|" + favs.programs[3].program_running_time;
         $timeout(function () {
             $location.path('app/routines');
         }, 500);
