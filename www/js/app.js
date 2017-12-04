@@ -310,12 +310,12 @@ angular.module('starter', ['ionic', 'config', 'languages', 'starter.controllers'
    for(lang in translations){
 		$translateProvider.translations(lang, translations[lang]);
 	}
-  if(localStorage.MyMat_currentLang){
-	  $translateProvider.preferredLanguage(localStorage.MyMat_currentLang);
+  if(window.localStorage.MyMat_currentLang){
+	  $translateProvider.preferredLanguage(window.localStorage.MyMat_currentLang);
   }
   else {
 	  $translateProvider.preferredLanguage('en');
-	  localStorage.MyMat_currentLang = "en";
+	  window.localStorage.MyMat_currentLang = "en";
   }
 	$translateProvider.fallbackLanguage('en');
     

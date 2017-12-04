@@ -60,9 +60,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.coilText = translations[$translate.preferredLanguage()]['coil'];
     
     $scope.switchLang = function(code){
-        localStorage.MyMat_currentLang = code;
+        $window.localStorage.MyMat_currentLang = code;
         $translate.preferredLanguage(code);
-        $window.location.reload(true);
+        $window.location.reload();
     }
     $scope.logoutUser = function(){
         User.attempUserLogout();
@@ -71,7 +71,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         logoutObjects();
     }
     
-    if(localStorage.getItem("MyMat_pending") && localStorage.getItem("MyMat_pending").length > 0){
+    /*if(localStorage.getItem("MyMat_pending") && localStorage.getItem("MyMat_pending").length > 0){
         var pending_values = localStorage.getItem("MyMat_pending").split('!');
         if(pending_values[0] == "save-routines"){
             var programsParams = {
@@ -85,7 +85,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 Program.saveCurrentRoutine(programsParams);
                 localStorage.setItem("MyMat_pending", "");
         }
-    }
+    }*/
     
     $scope.translations = Languages;
     localStorage.MyMat_fbStatus = "";
@@ -105,11 +105,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }
     
     // Revisar si el usuario esta logueado
-    if(localStorage.MyMat_isUserLogged == 'true'){
-        $location.path('app/home');
+    /*if(localStorage.MyMat_isUserLogged == 'true'){*/
+        $location.path('app/routines');
         loginObjects();
-        setTimeout(function(){ $location.path('app/routines') }, 2000);
-    }
+        //setTimeout(function(){ $location.path('app/routines') }, 2000);
+    /*}
     else{
         logoutObjects();
         
@@ -117,7 +117,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $location.path('app/login');
             localStorage.MyMat_DisplayLoginView = false;
         }
-    }
+    }*/
     
     getOfflinePorgramObject = function (name) {
         var returnedObj;
