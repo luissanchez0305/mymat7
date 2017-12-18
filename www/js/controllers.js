@@ -26,6 +26,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $scope.hideLangGr = "";
             $scope.hideLangIt = "";
             $scope.hideLangFr = "";
+            $scope.hideLangPt = "";
             $scope.hideLangEs = "hide";
             break;
         case "en":
@@ -34,6 +35,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $scope.hideLangIt = "";
             $scope.hideLangFr = "";
             $scope.hideLangEs = "";
+            $scope.hideLangPt = "";
             break;
         case "it":
             $scope.hideLangEn = "";
@@ -41,6 +43,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $scope.hideLangIt = "hide";
             $scope.hideLangFr = "";
             $scope.hideLangEs = "";
+            $scope.hideLangPt = "";
             break;
         case "gr":
             $scope.hideLangEn = "";
@@ -48,6 +51,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $scope.hideLangIt = "";
             $scope.hideLangFr = "";
             $scope.hideLangEs = "";
+            $scope.hideLangPt = "";
             break;
         case "fr":
             $scope.hideLangEn = "";
@@ -55,6 +59,15 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             $scope.hideLangIt = "";
             $scope.hideLangFr = "hide";
             $scope.hideLangEs = "";
+            $scope.hideLangPt = "";
+            break;
+        case "pt":
+            $scope.hideLangEn = "";
+            $scope.hideLangGr = "";
+            $scope.hideLangIt = "";
+            $scope.hideLangFr = "";
+            $scope.hideLangEs = "";
+            $scope.hideLangPt = "hide";
             break;
     }
     $scope.coilText = translations[$translate.preferredLanguage()]['coil'];

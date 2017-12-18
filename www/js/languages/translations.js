@@ -469,20 +469,20 @@ var translations = {
         "program-kits": "Programm-Kits",
         "popular-routines": "Unsere beliebtesten Routinen",
         "basic": "BASIC <br> <br>",
-        "business-traveler": "BUSINESS & TRAVELER",
-        "family-kit": "FAMILIE und KIT",
-        "athlete": "ATHLET",
+        "business-traveler": "BUSINESS &<br/>REISEN",
+        "family-kit": "FAMILIE",
+        "athlete": "SPORT",
         "spa-wellness": "SPA & WELLNESS",
-        "stress-relief": "STRESS <br> RELIEF",
-        "chakra-balancing": "CHAKRA <br> BALANCING",
-        "elements-meridians": "ELEMENTE & <br> MERIDIANER",
+        "stress-relief": "STRESS <br> BEFREIUNG",
+        "chakra-balancing": "CHAKRAS",
+        "elements-meridians": "ELEMENTE & <br> MERIDIANE",
         "programs": "PROGRAMME",
         "continue": "Weiter",
-        "number-st": "st",
-        "number-Nd": "Nd",
-        "number-rd": "rd",
-        "number-Th": "Th",
-        "number-7": "th",
+        "number-st": ".",
+        "number-nd": ".",
+        "number-rd": ".",
+        "number-th": ".",
+        "number-7": ".",
         "help-text": "HILFE",
         "help-text1": "Woher weiß ich, welche Programme ich wählen soll?",
         "help-text2": "Es ist immer gut, mit dem Ausbalancieren des Systems zu beginnen. Dies sind einige Möglichkeiten, wie Sie das mit" + "beginnen können:"+
@@ -666,5 +666,145 @@ var translations = {
             "Aider la fonction nerveuse <br>" +
             "Améliorer l'absorption des nutriments <br>" +
             "Réduction de la tension musculaire"        
-	}
+	},
+	"pt" : {
+	    "help": "<a class=\"item-content\" ng-href=\"#/app/help\" href=\"#/app/help\">SOCORRO</a>",
+		"contact-us": "<a class=\"item-content\" ng-href=\"#/app/contactus\" href=\"#/app/contactus\">CONTATE-NOS</a>",
+		"contact-us-text": "CONTATE-NOS",
+		"running-time": "Tempo de execução",
+		"get-in-touch": "GEntre em contato conosco preenchendo o formulário abaixo.<br/>  " +              
+                    "Ou contacte-nos em <a href=\"mailto:support@healinghouse.life\">support@healinghouse.life</a>",
+            "remove-program": "Remover programa",
+            "yes": "Sim",
+            "cancel": "Cancelar",
+            "are-you-sure-program": "Tem certeza de que deseja remover este programa?",
+            "are-you-sure-routine": "Tem certeza de que deseja remover esta rotina?",
+        "name-text": "Nome:",
+        "message-text": "Mensagem:",
+        "send-text": "Enviar",
+        "email-success-message": "Obrigado por conectar com a gente!",
+        "email-success-title": "Enviei",
+        "email-error-message": "Preencha todos os campos obrigatórios corretamente",
+        "email-error-title": "A mensagem não pôde ser enviada",
+        "independent-programs": "PROGRAMAS INDEPENDENTES",
+        "register-login": "<a class=\"item-content\" ng-href=\"#/app/login\" href=\"#/app/login\">REGISTO/LOGIN</a>",
+        "forgot-password": "Esqueceu a Senha",
+        "forgot-password-link": "<a class=\"item-content\" ng-href=\"#/app/forgotpassword\" href=\"#/app/forgotpassword\">ESQUECIDO</a>",
+        "dont-worry": "Não se preocupe",
+        "introduce-email": "Introduza seu e-mail sob sua conta",
+        "recover-password": "Recupere sua senha",
+        "register": "REGISTO",
+        "register-link": "<a class=\"item-content\" ng-href=\"#/app/createaccount\" href=\"#/app/createaccount\">REGISTO</a>",
+        "password": "Senha",
+        "six-chars-min" : "Mínimo de 6 caracteres",
+        "male": "Masculino",
+        "female": "Fêmea",
+        "please-create-account": "Crie uma conta",
+        "create-account": "Criar Conta em portugues-Brasil",
+        "please-login": "Faça login usando as informações da sua conta",
+        "please-pair": "POR FAVOR PAIR SEU <br> MYMAT",
+        "activate-wifi" : "Passos para emparelhar MyMat",
+        "activate-wifi-1" : "1. Ligue o seu MyMat",
+        "activate-wifi-2" : "2. No seu dispositivo, navegue até suas configurações de Wi-Fi",
+        "activate-wifi-3" : "3. Conecte o WiFi do seu dispositivo com sua rede MyMat",
+        "activate-wifi-4" : "4. Uma vez que está conectado, volte para o aplicativo MyMat",
+        "start-routine" : "INICIAR ROTINA",
+        "battery-power" : "Carga da bateria",
+        "coil" : "Antena",
+        "start-your-routine" : "INICIE A SUA ROTINA",
+        "no-detect-1" : "Não foi possível detectar o seu MyMat",
+        "no-detect-2" : "Siga os passos para fazê-lo",
+        "email-sent" : "Um e-mail com instruções sobre como redefinir sua senha foi enviado",
+        "introduce-email" : "Introduza um e-mail",
+        "missing-email" : "E-mail faltando",
+        "first-name-text" : "Primeiro nome",
+        "last-name-text" : "Sobrenome",
+        "profile" : "Seu perfil",
+        "date-birth" : "Data de nascimento",
+        "profile-login" : "<a class=\"item-content\" ng-href=\"#/app/createaccount\" href=\"#/app/createaccount\">PERFIL</a>",
+        "offline-message" : "Conecte seu dispositivo à Internet",
+        "offline-title" : "Dispositivo OFFLINE",
+        "register-error-message" : "Erro para se conectar ao servidor principal. Tente novamente mais tarde",
+        "register-error-title" : "Não é possível conectar ao servidor",
+        "tap-program": "Toque o programa para adicionar à rotina | Toque e segure para aprender mais",
+                "welcome": "Bem-vindo ao aplicativo MyMat.",
+                "tap-bubble": "TAP TO CÍRCULO (+) PARA ADICIONAR",
+                //"press-hold": "Press and hold a heart to remove",
+                "run-routine": "FUNCIONE ESTA ROTINA",
+                "clean-routine": "LIMPE ESTA ROTINA",
+                "program-kits": "Kits de programas",
+                "popular-routines": "Nossas rotinas mais populares",
+                "basic": "BÁSICO<br><br>",
+                "business-traveler": "EMPRESA &<BR/>VIAJANTE",
+                "family-kit": "KIT DE<BR/>FAMÍLIA",
+                "athlete": "ATLETA",
+                "spa-wellness": "SPA &<br>BEM-ESTAR",
+                "stress-relief": "RELEVO DO<BR/>ESTRESSE",
+                "chakra-balancing": "EQUILIBRANDO<BR/>CHAKRA",
+                "elements-meridians": "ELEMENTOS E<BR/>MERIDIOS<br>",
+                "programs": "PROGRAMAS",
+                "continue": "Continuar",
+                "number-st" : ".",
+                "number-nd" : ".",
+                "number-rd" : ".",
+                "number-th" : ".",
+                "number-7" : ".",
+                "help-text": "AJUDA",
+                "help-text1": "Como eu sei quais programas escolher??",
+                "help-text2": "É sempre bom começar com o equilíbrio do sistema. Estas são algumas maneiras pelas quais você poderia começar isso com:" +
+                    "Balanceamento de energia, E-Smog, Alegria, Vitalidade<br><br>" +
+                    
+                    "Se você quiser aprimorar seu padrão de sono - escolha:<br>" +
+                    "Balanceamento de energia, E-Smog, Relaxe, Dormir<br><br>" +
+                    
+                    "Se você gostaria de alguma energia extra pela manhã:<br>" +
+                    "Balanceamento de energia, Energy Booster, Concentration (and any program connected to a problem you are dealing with – as Pain, Muscle, Joints, Headache etc.)Energy Booster, Concentration (e qualquer programa conectado a um problema com o qual você está lidando - como Pain, Muscle, Joints, Headache etc.) <br><br>" +
+                    
+                    "Para obter uma lista completa de programas e seus usos em relação aos sintomas, consulte o manual do usuário incluído com sua compra ou disponível gratuitamente em linha.",
+                "help-text3": "Quais programas devo evitar na noite?",
+                "help-text4": "Se você quer dormir bem, é melhor não estimular o organismo. Se você está acostumado a beber café à noite e ainda pode dormir, você pode usar qualquer programa, mas se você é mais sensível - melhor não usar os seguintes programas antes da hora de dormir: Circulação, Sistema Imunológico, Adrenal, Exaustão, Concentração e Energia Booster",
+                "help-text5": "Como os campos eletromagnéticos afetam meu corpo?",
+                "help-text6": "Tudo em nossos corpos é elétrico, nossas células se comunicam com freqüências eletromagnéticas, nosso coração gera ondas eletromagnéticas a cada batida, nosso sistema nervoso comunicou quando os neurônios reagem aos sinais eletromagnéticos através de sinapses. Com isso em mente, podemos entender como os campos magnéticos, elétricos e eletromagnéticos externos reagem com todos os aspectos do nosso corpo. Regulando frequências específicas de baixa intensidade, podemos escolher exatamente o que queremos reagir, atuando em células, órgãos e tecidos específicos.",
+                "help-text7": "Como o tratamento no nível celular me ajuda?",
+                "help-text8": "Ao carregar campos magnéticos ao redor das membranas celulares, os canais se abrem para uma melhor penetração de nutrientes. A abertura dos canais também promove a eliminação de resíduos mais fácil, restaurando a função celular adequada. Um sistema eficiente de células cria tecido eficiente, que vem junto para fazer órgãos. Restaurar a função adequada a partir do nível celular traz efeitos benéficos a longo prazo para todos os problemas relacionados e melhora o bem-estar geral. A função celular saudável também diminui a necessidade de substituição celular, abrandando os processos de envelhecimento e o desperdício de energia.",
+                "help-text9": "A terapia PEMF pode me proteger de doenças futuras?",
+                "help-text10": "O funcionamento efetivo de um nível sistemático reduzirá as oportunidades de desenvolvimento de doenças. As doenças começam no nível celular e as lesões devem começar a cicatrizar a nível celular. Ao usar frequências eletromagnéticas pulsadas, pode-se melhorar a circulação geral, acelerando assim os processos de reparação. Ao melhorar a saúde celular em geral, eles se quebram / desgastam com menos frequência. Células operacionais saudáveis acelerarão a recuperação e equilibrará as funções corporais.",
+
+                "help-text11": "Não há campos magnéticos ruins para mim?",
+                "help-text12": "O MyMat tem uma faixa de freqüência entre 1Hz a 200 kHz e a força EMF não excederá 10 micro Tesla por canal. O MyMat pode operar até 4 canais simultaneamente devido às suas 4 antenas, portanto, um máximo de 40 micro Tesla. Os campos magnéticos fora das freqüências baixas e extremamente baixas, como microondas, infravermelhos, radiofrequências e ultravioletas, têm efeitos prejudiciais variáveis ​​nas células e no corpo. A maior parte do nosso risco de exposição vem de freqüências mais altas, como linhas de energia e telefones celulares conectados diariamente às nossas cabeças. Essas freqüências representam maiores riscos porque estão constantemente expostas a elas e induzem danos nos tecidos, alteram a função celular e criam danos celulares gerais. É praticamente impossível viver uma vida evitando essas frequências, estão em todos os lugares e penetram tudo. Podemos escapar da E-smog, mas podemos usar o MyMat, que tem vários programas que podem ajudar a reduzir os efeitos prejudiciais do nosso bombardeio eletrônico constante, adicionando freqüências que mantêm nossos corpos em equilíbrio, mantendo as freqüências saudáveis ​​e naturais. </p>",
+
+                "help-text13": "A terapia PEMF substituirá minha medicação?",
+                "help-text14": "A terapia com as frequências eletromagnéticas pulsadas pode fazer uma melhoria significativa no bem-estar geral e diminuir muitos sintomas negativos. Pode ser usado juntamente com tratamentos e medicação para melhorar os resultados. É importante discutir com profissionais médicos antes de substituir quaisquer tratamentos ou medicamentos. Uma vez que um plano apropriado é criado e os resultados são vistos, é possível reduzir ou eliminar tratamentos ou medicação. Certifique-se sempre de solicitar aconselhamento médico ou consulta antes de mudar ou substituir os tratamentos existentes.</p>",
+
+                "help-text15": "Como os campos eletromagnéticos afetam meu corpo?",
+                "help-text16": "Everything in our bodies is electric, our cells communicate with electromagnetic frequencies, our heart generates electromagnetic waves with every beat, our nervous system communicated when neurons react to electro magnetic signals through synapses. With this in mind we can understand how external magnetic, electric and electromagnetic fields react with every aspect of our body. By regulating specific low intensity frequencies we can chose exactly what we want to react with, acting on specified cells, organs and tissues. </p>",
+
+                "help-text17": "Como o tratamento no nível celular me ajuda?",
+                "help-text18": "Ao carregar campos magnéticos ao redor das membranas celulares, os canais se abrem para uma melhor penetração de nutrientes. A abertura dos canais também promove a eliminação de resíduos mais fácil, restaurando a função celular adequada. Um sistema eficiente de células cria tecido eficiente, que vem junto para fazer órgãos. Restaurar a função adequada a partir do nível celular traz efeitos benéficos a longo prazo para todos os problemas relacionados e melhora o bem-estar geral. A função celular saudável também diminui a necessidade de substituição celular, abrandando os processos de envelhecimento e o desperdício de energia. </p>",
+
+                "help-text19": "A terapia PEMF pode me proteger de doenças futuras?",
+                "help-text20": "O funcionamento efetivo de um nível sistemático reduzirá as oportunidades de desenvolvimento de doenças. As doenças começam no nível celular e as lesões devem começar a cicatrizar a nível celular. Ao usar frequências eletromagnéticas pulsadas, pode-se melhorar a circulação geral, acelerando assim os processos de reparação. Ao melhorar a saúde celular em geral, eles se quebram / desgastam com menos frequência. Células operacionais saudáveis acelerarão a recuperação e equilibrará as funções corporais. </p>",
+
+                "help-text21": "Os campos magnéticos são ruins para mim?",
+                "help-text22": "O MyMat tem uma faixa de freqüência entre 1Hz a 200 kHz e a força EMF não excederá 10 micro Tesla por canal. O MyMat pode operar até 4 canais simultaneamente devido às suas 4 antenas, portanto, um máximo de 40 micro Tesla. Os campos magnéticos fora das freqüências baixas e extremamente baixas, como microondas, infravermelhos, radiofrequências e ultravioletas, têm efeitos prejudiciais variáveis ​​nas células e no corpo. A maior parte do nosso risco de exposição vem de freqüências mais altas, como linhas de energia e telefones celulares conectados diariamente às nossas cabeças. Essas freqüências representam maiores riscos porque estão constantemente expostas a elas e induzem danos nos tecidos, alteram a função celular e criam danos celulares gerais. É praticamente impossível viver uma vida evitando essas frequências, estão em todos os lugares e penetram tudo. Podemos escapar do E-smog, mas podemos usar o MyMat, que tem vários programas que podem ajudar a reduzir os efeitos prejudiciais do nosso bombardeio eletrônico constante, adicionando freqüências que mantêm nossos corpos em equilíbrio, mantendo as freqüências saudáveis ​​e naturais.</p>",
+
+                "help-text23": "Posso overdose em um campo magnético?",
+                "help-text24": "O MyMat opera com campos magnéticos pulsados de baixa intensidade. Uma célula saudável opera a uma capacidade ideal para que não tenha necessidade de mais energia e não possa aceitar mais energia, portanto ignora essas freqüências. Uma célula danificada ou com defeito pode absorver parte desta energia, mas é impossível sobrecarregar porque não há possibilidade de armazenar mais energia do que é necessário.</p>",
+
+                "help-text25": "Quais são algumas das ações benéficas básicas que o PEMFs terá no meu corpo?</div>",
+                "help-text26": "Melhorando a cura do tecido " +
+        "Reduzindo a dor<br>" +
+        "Aumento de energia<br>" +
+        "Melhorando o sono<br>" +
+        "Tornar os tecidos macios mais flexíveis<br>" +
+        "Estimulação meridiana<br>" +
+        "Redução da pressão arterial<br>" +
+        "Melhorando fatores de coagulação<br>" +
+        "Redução da absorção de artrite<br>" +
+        "Estimulação do sistema imunitário<br>" +
+        "Detox<br>" +
+        "Ajudar a função nervosa<br>" +
+        "Melhorando a absorção de nutrientes<br>" +
+        "Reduzindo a tensão muscular"
+    }
 }
