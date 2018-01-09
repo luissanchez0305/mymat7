@@ -76,7 +76,6 @@ angular.module('starter.services', [])
           return $http.post(url, emailData);
       }
   }
-
 })
 
 
