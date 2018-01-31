@@ -248,43 +248,43 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             description: translationsRoutines[$translate.preferredLanguage()]['urinary-bladder-meridian-description']
         },            
         {
-            name: "1" + translations[$translate.preferredLanguage()]['number-st'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-1st'] + " CHAKRA",
             apiName: "Root_Chakra",
             runningtime: "14:34",
             description: translationsRoutines[$translate.preferredLanguage()]['1-chakra-description']
         },
         {
-            name: "2" + translations[$translate.preferredLanguage()]['number-nd'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-2nd'] + " CHAKRA",
             apiName: "Sacral_Chakra",
             runningtime: "12:06",
             description: translationsRoutines[$translate.preferredLanguage()]['2-chakra-description']
         },
         {
-            name: "3" + translations[$translate.preferredLanguage()]['number-rd'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-3rd'] + " CHAKRA",
             apiName: "Solar_Plexus_Chakra",
             runningtime: "15:18",
             description: translationsRoutines[$translate.preferredLanguage()]['3-chakra-description']
         },
         {
-            name: "4" + translations[$translate.preferredLanguage()]['number-th'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-4th'] + " CHAKRA",
             apiName: "Heart_Chakra",
             runningtime: "17:01",
             description: translationsRoutines[$translate.preferredLanguage()]['4-chakra-description']
         },
         {
-            name: "5" + translations[$translate.preferredLanguage()]['number-th'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-5th'] + " CHAKRA",
             apiName: "Throat_Chakra",
             runningtime: "15:50",
             description: translationsRoutines[$translate.preferredLanguage()]['5-chakra-description']
         },
         {
-            name: "6" + translations[$translate.preferredLanguage()]['number-th'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-6th'] + " CHAKRA",
             apiName: "Brow_Chakra",
             runningtime: "14:40",
             description: translationsRoutines[$translate.preferredLanguage()]['6-chakra-description']
         },
         {
-            name: "7" + translations[$translate.preferredLanguage()]['number-7'] + " CHAKRA",
+            name: translations[$translate.preferredLanguage()]['number-7th'] + " CHAKRA",
             apiName: "Crown_Chakra",
             runningtime: "12:12",
             description: translationsRoutines[$translate.preferredLanguage()]['7-chakra-description']
