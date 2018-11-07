@@ -5,7 +5,7 @@
         version   = "7.4.11"
         versionCode = "49">
     <!--<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">-->
-    <name>MyMat - Light 7</name>
+    <name>MyMat - Basic</name>
     <description>My Mat</description>
     <author href="https://www.esferasoluciones.com" email="lsanchez@esferasoluciones.com">
         Luis Ricardo Sánchez.
